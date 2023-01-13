@@ -31,6 +31,7 @@ const Chat = () => {
                         updatedChat.push(message);
                     
                         setChat(updatedChat);
+                        // after updating chat make sure that if the scrollbar is close enough to the end, it'll automatically slide down to show new messages
                     });
                 })
                 .catch(e => console.log('Connection failed: ', e));
