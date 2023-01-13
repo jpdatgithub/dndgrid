@@ -1,12 +1,11 @@
 import React from 'react';
 import Chat from './Chat/Chat';
+import Game from './Game/Game'
 
 function App() {
   return (
     <div className="base-structure">
-        <div className="board">
-
-        </div>
+        <Game />
         <Chat />
         <div className="panel">
 

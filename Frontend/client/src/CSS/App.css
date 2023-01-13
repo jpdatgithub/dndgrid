@@ -14,7 +14,7 @@
   grid-template-rows: 4fr 1fr;
 }
 
-.board {
+.game {
   grid-column: 1 / 3;
   grid-row: 1;
 }
@@ -38,3 +38,5 @@
 .chat-input {
   grid-row: 2;
 }
+
+/* GAME - Board and cells */
