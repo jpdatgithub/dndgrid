@@ -1,4 +1,4 @@
-namespace Dndvtt.Api.Models
+namespace dndvtt.api.Models.Chat
 {
 
     public class ChatMessage
@@ -8,7 +8,7 @@ namespace Dndvtt.Api.Models
 
         public string? Message { get; set; }
 
-        
+
     }
 
 }

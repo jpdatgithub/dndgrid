@@ -1,9 +1,9 @@
 using System.Threading.Tasks;
-using Dndvtt.Api.Hubs.Clients;
-using Dndvtt.Api.Models;
+using dndvtt.api.Hubs.Clients;
+using dndvtt.api.Models.Chat;
 using Microsoft.AspNetCore.SignalR;
 
-namespace Dndvtt.Api.Hubs
+namespace dndvtt.api.Hubs
 {
     public class ChatHub : Hub<IChatClient>
     {

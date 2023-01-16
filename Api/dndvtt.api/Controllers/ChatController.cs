@@ -1,7 +1,7 @@
 using System.Threading.Tasks;
+using dndvtt.api.Models.Chat;
 using Dndvtt.Api.Hubs;
 using Dndvtt.Api.Hubs.Clients;
-using Dndvtt.Api.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
 

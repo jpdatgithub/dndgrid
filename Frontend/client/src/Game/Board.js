@@ -25,7 +25,7 @@ class Board extends React.Component {
     }
 
     renderCell(x, y) {
-        const cellIndex = (y * x) + x;
+        const cellIndex = (y * this.props.cellsPerRow) + x;
 
         return (
             <Cell
@@ -56,8 +56,6 @@ class Board extends React.Component {
     }
 
     render() {
-
-
         return (
             <div className='board'>
                 {

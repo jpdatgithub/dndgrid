@@ -1,4 +1,6 @@
-using Dndvtt.Api.Hubs;
+using dndvtt.api.Facades;
+using dndvtt.api.Hubs;
+using dndvtt.api.Models.Game;
 
 var ClientPermission = "_clientPermission";
 
@@ -18,7 +20,15 @@ builder.Services.AddCors(options =>
 
 builder.Services.AddSignalR();
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddSingleton<IGameFacade>(options =>
+{
+    //get last state of the board here, meant to be get from a database but for now we'll use a dummie
+    var boardModel = new BoardModel(16, 4);
+    //configure the game facade here
+    return new GameFacade();
+});
+
+// SWAGGER
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -27,6 +37,7 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
+    //SWAGGER
     app.UseSwagger();
     app.UseSwaggerUI();
 }
@@ -42,5 +53,6 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.MapHub<ChatHub>("/hubs/chat");
+app.MapHub<GameHub>("/hubs/game");
 
 app.Run();

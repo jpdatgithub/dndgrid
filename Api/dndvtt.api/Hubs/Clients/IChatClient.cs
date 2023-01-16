@@ -1,7 +1,7 @@
 using System.Threading.Tasks;
-using Dndvtt.Api.Models;
+using dndvtt.api.Models.Chat;
 
-namespace Dndvtt.Api.Hubs.Clients
+namespace dndvtt.api.Hubs.Clients
 {
     public interface IChatClient
     {
