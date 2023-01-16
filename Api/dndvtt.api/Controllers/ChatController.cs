@@ -1,11 +1,11 @@
 using System.Threading.Tasks;
 using dndvtt.api.Models.Chat;
-using Dndvtt.Api.Hubs;
-using Dndvtt.Api.Hubs.Clients;
+using dndvtt.api.Hubs;
+using dndvtt.api.Hubs.Clients;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
 
-namespace Dndvtt.Api.Controllers
+namespace dndvtt.api.Controllers
 {
     [ApiController]
     [Route("[controller]")]
