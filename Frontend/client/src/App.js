@@ -1,4 +1,5 @@
 import React from 'react';
+import './Css/App.css';
 import Chat from './Chat/Chat';
 import Game from './Game/Game'
 
@@ -10,7 +11,7 @@ function App() {
         <div className="panel">
 
         </div>
-        <div className="tools">
+        <div className="toolbar">
 
         </div>
       </div>

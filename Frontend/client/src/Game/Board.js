@@ -1,66 +1,24 @@
 import React from 'react';
-
-function Cell(props) {
-    return (
-        <button className='cell' /* onClick={props.onClick}*/ >
-            {props.value}
-        </button>
-    )
-}
+import '../Css/Board.css'
+import Cell from './Cell.js';
 
 class Board extends React.Component {
-    getRow(cells, cellsPerRow, index) {
-        const rowStart = index * cellsPerRow;
-        return cells.slice(rowStart, rowStart + cellsPerRow)
-    }
-
-    getAllRows(cells, cellsPerRow) {
-        var allRows = [];
-        const rowsPerBoard = cells.length / cellsPerRow;
-        for (let i = 0; i < rowsPerBoard; i++) {
-            allRows.concat(this.getRow(cells, cellsPerRow, i));
-        }
-
-        return allRows;
-    }
-
-    renderCell(x, y) {
-        const cellIndex = (y * this.props.cellsPerRow) + x;
-
-        return (
-            <Cell
-                value = {this.props.cells[cellIndex]}
-                // onClick={() => this.props.onClick(cellIndex)}
-            />
-        );
-    }
-
-    renderCellRow(row, rowIndex) {
-        const cellRow = row.map(cell => (
-            <li /*key={}*/>{this.renderCell(cell, rowIndex)}</li>
-        ));
-
-        return (
-            <ul className='eachRow'>{cellRow}</ul>
-        );
-    }
-
-    renderRows(rowsPassed) {
-        const rowsRendered = rowsPassed.map(row => (
-            <li /*key={a}*/>{this.renderCellRow(row, rowsPassed.indexOf(row))}</li>
-        ));
-
-        return (
-            <ul className='allRows'>{rowsRendered}</ul>
-        );
+    constructor(props) {
+        super(props);
     }
 
     render() {
+        var renderedCells = this.props.cells.map((cellRow, rIndex) => {
+            return <ul className ='cell-row' key={"row"+String(rIndex)}>{
+                cellRow.map((cell, cIndex) => {
+                    return <li className="cell-square" key={"cell"+String(rIndex*cellRow.length + cIndex)}><Cell value={cell}/></li>;
+                })
+            }</ul>;
+        });
+
         return (
             <div className='board'>
-                {
-                    this.renderRows(this.getAllRows(this.props.cells, this.props.cellsPerRow))
-                }
+                {renderedCells}
             </div>
         );
     }
