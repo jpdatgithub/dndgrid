@@ -1,6 +1,7 @@
 import React from 'react';
+import '../Css/Toolbar/Toolbar.css'
+
 import Toolbutton from './Toolbutton.js'
-import '../Css/Toolbar.css'
 
 class Toolbar extends React.Component {
     constructor(props) {

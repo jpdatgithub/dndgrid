@@ -3,10 +3,10 @@ import './Css/App.css';
 import React, { useState, useEffect, useRef } from 'react';
 import { HubConnectionBuilder } from '@microsoft/signalr';
 
-import ChatWindow from './Chat/ChatWindow';
-import ChatInput from './Chat/ChatInput';
-import Board from './Game/Board';
-import Toolbar from './Toolbar/Toolbar';
+import ChatWindow from './Components/Chat/ChatWindow';
+import ChatInput from './Components/Chat/ChatInput';
+import Board from './Components/Game/Board';
+import Toolbar from './Components/Toolbar/Toolbar';
 
 function App() {
     const [ connection, setConnection ] = useState(null);

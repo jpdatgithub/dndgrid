@@ -1,18 +1,18 @@
 import React from 'react';
-import '../Css/Cell.css';
+import '../Css/Toolbar//Toolbutton.css';
 
-class Cell extends React.PureComponent {
+class Toolbutton extends React.PureComponent {
     constructor(props) {
         super(props);
     }
 
     render() {
         return (
-            <button className='cell' /* onClick={props.onClick}*/ >
+            <button className='toolbutton' /* onClick={props.onClick}*/ >
                 {this.props.value}
             </button>
         );
     }
 }
 
-export default Cell;
+export default Toolbutton;

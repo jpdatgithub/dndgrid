@@ -1,5 +1,6 @@
 import React from 'react';
-import '../Css/Board.css'
+import '../Css/Game/Board.css'
+
 import Cell from './Cell.js';
 
 class Board extends React.Component {
