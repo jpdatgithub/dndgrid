@@ -1,7 +1,7 @@
 import React from 'react';
 import '../Css/Toolbutton.css';
 
-class Cell extends React.PureComponent {
+class Toolbutton extends React.PureComponent {
     constructor(props) {
         super(props);
     }
@@ -15,4 +15,4 @@ class Cell extends React.PureComponent {
     }
 }
 
-export default Cell;
+export default Toolbutton;
