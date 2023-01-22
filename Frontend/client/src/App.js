@@ -7,6 +7,7 @@ import ChatWindow from './Components/Chat/ChatWindow';
 import ChatInput from './Components/Chat/ChatInput';
 import Board from './Components/Game/Board';
 import Toolbar from './Components/Toolbar/Toolbar';
+import TabViewer from './Components/TabViewer/TabViewer';
 
 function App() {
     const [ connection, setConnection ] = useState(null);
@@ -95,6 +96,12 @@ function App() {
       [" ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " "],
     ];
 
+    const panelTestContent = {
+        id: "panelTabViewer",
+        content: ["a", "b"]
+    }
+      
+
     var testTools = ["attacks", "spells", "skills", "saving throws", "inventory"];
 
     return (
@@ -108,7 +115,7 @@ function App() {
           <ChatWindow chat={chat}/>
         </div>
         <div className="panel">
-
+            <TabViewer contentTabs = {panelTestContent.content} contentDivId = {panelTestContent.id}/>
         </div>
         <div className="tools">
           <Toolbar toolbuttons={testTools}/>
