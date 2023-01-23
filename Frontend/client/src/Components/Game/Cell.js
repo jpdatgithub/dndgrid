@@ -1,4 +1,5 @@
 import React from 'react';
+
 import '../../Css/GameCss/Cell.css';
 
 class Cell extends React.PureComponent {
