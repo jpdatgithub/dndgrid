@@ -1,0 +1,4 @@
+.chat-window {
+    overflow-y: auto;
+    grid-row: 1;
+}
