@@ -1,5 +1,6 @@
 import React from 'react';
-import '../Css/Game/Cell.css';
+
+import '../../Css/GameCss/Cell.css';
 
 class Cell extends React.PureComponent {
     constructor(props) {

@@ -1,5 +1,6 @@
 import React from 'react';
-import '../Css/Game/Board.css'
+
+import '../../Css/GameCss/Board.css'
 
 import Cell from './Cell.js';
 
