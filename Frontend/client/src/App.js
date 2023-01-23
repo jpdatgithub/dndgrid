@@ -13,6 +13,9 @@ import TabViewer from './Components/TabViewer/TabViewer';
 function App() {
     const [ connection, setConnection ] = useState(null);
     const [ chat, setChat ] = useState([]);
+    const [ board, setBoard ] = useState([]);
+    const [ panel, setPanel ] = useState([]);
+    const [ tools, setTools ] = useState([]);
     const latestChat = useRef(null);
 
     latestChat.current = chat;
@@ -31,6 +34,9 @@ function App() {
             connection.start()
                 .then(() => {
                     console.log('Connected!');
+
+                    //fetch initial state here?
+
     
                     connection.on('ReceiveMessage', message => {
                         const updatedChat = [...latestChat.current];
@@ -61,6 +67,18 @@ function App() {
         }
         catch(e) {
             console.log('Sending message failed.', e);
+        }
+    }
+
+    const fetchInitialOverallState = async () => {
+        try {
+            setChat(initData.chat);
+            setBoard(initData.board);
+            setPanel(initData.panel);
+            setTools(initData.tools);
+        }
+        catch(e) {
+            console.log('Initial state fetching failed.', e);
         }
     }
 
