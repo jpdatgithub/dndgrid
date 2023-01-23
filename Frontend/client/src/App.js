@@ -96,10 +96,18 @@ function App() {
       [" ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " "],
     ];
 
-    const panelTestContent = {
-        id: "panelTabViewer",
-        content: ["a", "b"]
-    }
+    const panelTestContent = [
+        {
+            selectorTitle: 'titleA',
+            text: 'a'
+        },
+        {
+            selectorTitle: 'titleB',
+            text: 'b'
+        }
+    ]
+
+    const panelId = "panel";
       
 
     var testTools = ["attacks", "spells", "skills", "saving throws", "inventory"];
@@ -115,7 +123,7 @@ function App() {
           <ChatWindow chat={chat}/>
         </div>
         <div className="panel">
-            <TabViewer contentTabs = {panelTestContent.content} contentDivId = {panelTestContent.id}/>
+            <TabViewer contentTabs = {panelTestContent} tvId = {panelId}/>
         </div>
         <div className="tools">
           <Toolbar toolbuttons={testTools}/>

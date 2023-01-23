@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import '../../Css/ChatCss/ChatInput.css';
 
 const ChatInput = (props) => {
     const [user, setUser] = useState('');

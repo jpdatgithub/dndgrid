@@ -4,21 +4,39 @@
     border: none;
     outline: none;
     cursor: pointer;
-    padding: 14px 16px;
+
     transition: 0.3s;
 }
 
 .tab-link:hover {
-    background-color: #ddd;
+    background-color: #CA965C;
 }
 
 .tab-link.active {
-    background-color: #ccc;
+    background-color: #CA965C;
 }
 
 .tab-selector {
     overflow: hidden;
-    border: 1px solid #ccc;
-    background-color: #f1f1f1;
+    border: 0;
+    background-color: #EEC373;
 }
 
+.tab-viewer {
+    display: grid;
+    grid-template-rows: 1fr 4fr;
+}
+
+.tab-selector {
+    grid-row: 1;
+}
+
+.tab-view {
+    grid-row: 2;
+}
+
+.tab-content {
+    display: none;
+    padding: 0;
+    border: 0;
+}

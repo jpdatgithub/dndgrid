@@ -5,54 +5,63 @@ import TabContent from './TabContent.js'
 
 class TabViewer extends React.Component {
   // requer um array de conteudo chamado contentTabs cujos elementos sejam interpretaveis pelo componente TabContent
-  // requer um contentDivId único na página
 
     constructor(props) {
         super(props)
+
+        this.selectorsDivRef = null;
+        this.contentDivRef = null;
     }
 
+    setSelectorDivRef = element => {
+      this.selectorsDivRef = element;    
+    };
+
+    setContentDivRef = element => {
+      this.contentDivRef = element;    
+    };
+
     openTab(selected) {
-        var i, contentDiv, tabContent, selectorsDiv, tabLinks, thisTV;
+      if (this.selectorsDivRef && this.contentDivRef) {
+        var i, tabContent, tabLinks;
       
-        thisTV = document.getElementById("tv" + this.props.contentDivId)
-        
-        contentDiv = thisTV.getElementById(this.props.contentDivId);
-        tabContent = contentDiv.getElementsByClassName("tab-content")
+        tabContent = this.contentDivRef.children;
+        tabLinks = this.selectorsDivRef.children;
+
         for (i = 0; i < tabContent.length; i++) {
           tabContent[i].style.display = "none";
         }
-      
-        selectorsDiv = thisTV.getElementById("tab-selector");
-        tabLinks = selectorsDiv.getElementsByClassName("tab-link");
+    
         for (i = 0; i < tabLinks.length; i++) {
           tabLinks[i].className = tabLinks[i].className.replace(" active", "");
         }
-      
-        contentDiv.getElementById(selected).style.display = "block";
-        selectorsDiv.getElementById(i).className += " active";
-      } 
+    
+        tabContent[selected].style.display = "block";
+        tabLinks[selected].className += " active";
+      }
+    }
 
     render() {
       var tabLinks = this.props.contentTabs.map((content, i) => {
          return (
-          <button className='tab-link' onClick={this.openTab(i)}>{content.selectorTitle}</button>
+          <button key = {this.props.tvId + "tabLink" + String(i)} className='tab-link' onClick={() => this.openTab(i)}>{content.selectorTitle}</button>
          );
       });
 
       var renderedContent = this.props.contentTabs.map((content, i) => {
         return (
-          <div className='tab-content' id={String(i)}>
-            <TabContent content={content}/>
+          <div key = {this.props.tvId + "tabContent" + String(i)} className='tab-content' id={String(i)}>
+            <TabContent content={content.text}/>
           </div>
         );
       });
 
       return (
-        <div className='tab-viewer' id ={"tv"+this.props.contentDivId}>
-          <div id='tab-selector'>
+        <div className='tab-viewer'>
+          <div className='tab-selector' ref = {this.setSelectorDivRef}>
             {tabLinks}
           </div>
-          <div id={this.props.contentDivId}>
+          <div className='tab-view' ref = {this.setContentDivRef}>
             {renderedContent}
           </div>
         </div>

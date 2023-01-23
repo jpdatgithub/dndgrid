@@ -1,4 +1,5 @@
 import React from 'react';
+import '../../Css/ChatCss/ChatWindow.css';
 
 import Message from './Message';
 

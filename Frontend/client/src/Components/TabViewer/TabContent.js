@@ -7,7 +7,7 @@ class TabContent extends React.Component {
     }
 
     render() {
-      return <p>{this.props.content.text}</p>
+      return <p>{this.props.content}</p>
     }
 }
 
