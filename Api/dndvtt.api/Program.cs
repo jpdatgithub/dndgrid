@@ -1,6 +1,9 @@
 using dndvtt.api.Facades;
-using dndvtt.api.Hubs;
+using dndvtt.api.Facades.Interfaces;
 using dndvtt.api.Models.Game;
+using dndvtt.api.Hubs.Clients;
+using dndvtt.api.Hubs;
+using Microsoft.AspNetCore.SignalR;
 
 var ClientPermission = "_clientPermission";
 
@@ -20,14 +23,9 @@ builder.Services.AddCors(options =>
 
 builder.Services.AddSignalR();
 builder.Services.AddControllers();
-builder.Services.AddSingleton<IGameFacade>(options =>
-{
-    //get last state of the board here, meant to be get from a database but for now we'll use a dummie
-    var boardModel = new BoardModel(16, 4);
-    //configure the game facade here
-    return new GameFacade();
-});
-
+builder.Services.AddScoped<Hub<ITtmClient>, TtmHub>();
+builder.Services.AddScoped<IBoardFacade, BoardFacade>();
+builder.Services.AddScoped<ITtmFacade, TtmFacade>();
 // SWAGGER
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -52,7 +50,6 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-app.MapHub<ChatHub>("/hubs/chat");
-app.MapHub<GameHub>("/hubs/game");
+app.MapHub<TtmHub>("/hubs/Ttm");
 
 app.Run();

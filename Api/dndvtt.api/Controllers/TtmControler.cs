@@ -4,18 +4,26 @@ using dndvtt.api.Hubs;
 using dndvtt.api.Hubs.Clients;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
+using dndvtt.api.Facades.Interfaces;
 
 namespace dndvtt.api.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
-    public class ChatController : ControllerBase
+    [Route("ttm")]
+    public class TtmControler : ControllerBase
     {
-        private readonly IHubContext<ChatHub, IChatClient> _chatHub;
+        private ITtmFacade _ttmFacade;
 
-        public ChatController(IHubContext<ChatHub, IChatClient> chatHub)
+        public TtmControler(ITtmFacade ttmFacade)
         {
-            _chatHub = chatHub;
+            _ttmFacade = ttmFacade;
+        }
+
+        [HttpGet("init")]
+        public async Task<IActionResult> Init()
+        {
+
+            return Ok();
         }
 
         [HttpPost("messages")]
@@ -23,7 +31,7 @@ namespace dndvtt.api.Controllers
         {
             // run some logic...
 
-            await _chatHub.Clients.All.ReceiveMessage(message);
+            await _ttmFacade.SendMessageToAll(message);
         }
     }
 }

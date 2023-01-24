@@ -5,8 +5,8 @@ using Microsoft.AspNetCore.SignalR;
 
 namespace dndvtt.api.Hubs
 {
-    public class ChatHub : Hub<IChatClient>
+    public class TtmHub : Hub<ITtmClient>
     {
-        
+
     }
 }
