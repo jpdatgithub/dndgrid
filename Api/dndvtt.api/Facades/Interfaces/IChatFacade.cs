@@ -1,6 +1,6 @@
 ﻿namespace dndvtt.api.Facades.Interfaces
 {
-    public interface IGameFacade
+    public interface IChatFacade
     {
     }
 }
