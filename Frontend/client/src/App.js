@@ -13,13 +13,16 @@ import TabViewer from './Components/TabViewer/TabViewer';
 function App() {
     const [ connection, setConnection ] = useState(null);
     const [ chat, setChat ] = useState([]);
+    const [ board, setBoard ] = useState([]);
+    const [ panel, setPanel ] = useState([]);
+    const [ tools, setTools ] = useState([]);
     const latestChat = useRef(null);
 
     latestChat.current = chat;
 
     useEffect(() => {
         const newConnection = new HubConnectionBuilder()
-            .withUrl('http://localhost:5191/hubs/chat')
+            .withUrl('http://localhost:5191/hubs/Ttm')
             .withAutomaticReconnect()
             .build();
 
@@ -31,6 +34,9 @@ function App() {
             connection.start()
                 .then(() => {
                     console.log('Connected!');
+
+                    //fetch initial state here?
+
     
                     connection.on('ReceiveMessage', message => {
                         const updatedChat = [...latestChat.current];
@@ -51,7 +57,7 @@ function App() {
         };
 
         try {
-            await  fetch('http://localhost:5191/chat/messages', { 
+            await  fetch('http://localhost:5191/ttm/messages', { 
                 method: 'POST', 
                 body: JSON.stringify(chatMessage),
                 headers: {
@@ -61,6 +67,19 @@ function App() {
         }
         catch(e) {
             console.log('Sending message failed.', e);
+        }
+    }
+
+    const fetchInitialOverallState = async () => {
+        try {
+            var initData;
+            setChat(initData.chat);
+            setBoard(initData.board);
+            setPanel(initData.panel);
+            setTools(initData.tools);
+        }
+        catch(e) {
+            console.log('Initial state fetching failed.', e);
         }
     }
 
