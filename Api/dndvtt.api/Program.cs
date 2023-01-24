@@ -24,7 +24,7 @@ builder.Services.AddCors(options =>
 builder.Services.AddSignalR();
 builder.Services.AddControllers();
 builder.Services.AddScoped<Hub<ITtmClient>, TtmHub>();
-builder.Services.AddScoped<IGameFacade, GameFacade>();
+builder.Services.AddScoped<IBoardFacade, BoardFacade>();
 builder.Services.AddScoped<ITtmFacade, TtmFacade>();
 // SWAGGER
 builder.Services.AddEndpointsApiExplorer();

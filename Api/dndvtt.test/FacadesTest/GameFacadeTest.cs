@@ -10,7 +10,7 @@ namespace dndvtt.api.test.FacadesTest
 {
     internal class GameFacadeTest
     {
-        GameFacade _sut = new GameFacade();
+        BoardFacade _sut = new BoardFacade();
         Dictionary<string, string> testConfig;
 
         public GameFacadeTest() {

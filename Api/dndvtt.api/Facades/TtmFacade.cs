@@ -9,11 +9,17 @@ namespace dndvtt.api.Facades
     public class TtmFacade : ITtmFacade
     {
         private readonly IHubContext<TtmHub, ITtmClient>? _ttmHub;
-        private IGameFacade? _gameFacade;
+        private IBoardFacade? _boardFacade;
+        private IChatFacade? _chatFacade;
+        private IToolsFacade? _toolsFacade;
+        private IPanelFacade? _panelFacade;
 
-        public TtmFacade(IHubContext<TtmHub, ITtmClient> ttmHub, IGameFacade gameFacade)
+        public TtmFacade(IHubContext<TtmHub, ITtmClient> ttmHub, IBoardFacade boardFacade, IChatFacade chatFacade, IToolsFacade toolsFacade, IPanelFacade panelFacade)
         {
-            _gameFacade = gameFacade;
+            _boardFacade = boardFacade;
+            _chatFacade = chatFacade;
+            _toolsFacade = toolsFacade;
+            _panelFacade = panelFacade;
             _ttmHub = ttmHub;
         }
 
