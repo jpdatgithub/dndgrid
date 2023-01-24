@@ -1,6 +1,12 @@
-﻿namespace dndvtt.api.Facades
+﻿using dndvtt.api.Facades.Interfaces;
+
+namespace dndvtt.api.Facades
 {
-    public class ChatFacade
+    public class ChatFacade : IChatFacade
     {
+        public ChatFacade()
+        { 
+        
+        }
     }
 }

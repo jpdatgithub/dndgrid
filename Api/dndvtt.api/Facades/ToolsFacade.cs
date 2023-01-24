@@ -2,7 +2,7 @@
 
 namespace dndvtt.api.Facades
 {
-    public class ToolsFacade : IBoardFacade
+    public class ToolsFacade : IToolsFacade
     {
         public ToolsFacade()
         {

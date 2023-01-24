@@ -4,7 +4,8 @@ namespace dndvtt.api.Facades
 {
     public class BoardFacade : IBoardFacade
     {
-        public BoardFacade() { 
+        public BoardFacade()
+        { 
 
         }
     }
