@@ -3,7 +3,7 @@ using dndvtt.api.Models.Chat;
 
 namespace dndvtt.api.Hubs.Clients
 {
-    public interface IChatClient
+    public interface ITtmClient
     {
         Task ReceiveMessage(ChatMessage message);
     }

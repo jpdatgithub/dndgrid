@@ -22,7 +22,7 @@ function App() {
 
     useEffect(() => {
         const newConnection = new HubConnectionBuilder()
-            .withUrl('http://localhost:5191/hubs/chat')
+            .withUrl('http://localhost:5191/hubs/Ttm')
             .withAutomaticReconnect()
             .build();
 
@@ -57,7 +57,7 @@ function App() {
         };
 
         try {
-            await  fetch('http://localhost:5191/chat/messages', { 
+            await  fetch('http://localhost:5191/ttm/messages', { 
                 method: 'POST', 
                 body: JSON.stringify(chatMessage),
                 headers: {
@@ -72,6 +72,7 @@ function App() {
 
     const fetchInitialOverallState = async () => {
         try {
+            var initData;
             setChat(initData.chat);
             setBoard(initData.board);
             setPanel(initData.panel);
