@@ -1,0 +1,23 @@
+as a client i want to
+	click a cell
+
+	have the action "add token" displayed in my "hand" tab from tools
+
+	have the available tokens displayed in same tab in tools
+
+given that i'm on the available add token -> available tokens screen on tools, i want to
+	click an available token
+
+	have the token added and displayed on the field
+
+---------------------------------------------------------------------------------------------------
+
+as ttm facade contains the hub, method will be invoked there from client with needed info to perform the action, in this case, add a token
+so something like "addtoken(position, tokenId)" on the ttm facade
+facade can then load the token details from the database with the id and instantiate it, then send it to the board facade
+board facade will place the token where it should and return the new state of the board, so that it can be sent to all clients frontend
+
+----------------------------------------------------------------------------------------------------
+
+next now is to handle the token loading from database
+then we get back to the facade and handle how to send the updated board back to clients
