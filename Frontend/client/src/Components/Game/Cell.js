@@ -9,7 +9,7 @@ class Cell extends React.PureComponent {
     render() {
         return (
             <button className='cell' /* onClick={props.onClick}*/ >
-                {this.props.value}
+                {this.props.occupied ? <img src={"../../Images/" + this.props.tokenPicId}/> : <></>}
             </button>
         );
     }

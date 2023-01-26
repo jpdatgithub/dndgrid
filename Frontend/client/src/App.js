@@ -70,19 +70,6 @@ function App() {
         }
     }
 
-    const fetchInitialOverallState = async () => {
-        try {
-            var initData;
-            setChat(initData.chat);
-            setBoard(initData.board);
-            setPanel(initData.panel);
-            setTools(initData.tools);
-        }
-        catch(e) {
-            console.log('Initial state fetching failed.', e);
-        }
-    }
-
     const slicedRows = [
       [" ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " "],
       [" ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " "],
@@ -116,6 +103,15 @@ function App() {
       [" ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " "],
     ];
 
+    var testBoardRendering = [
+        [
+            {
+                occupied: true,
+                tokenPicId: "token_1.png"
+            }
+        ]
+    ]
+
     const panelTestContent = [
         {
             selectorTitle: 'titleA',
@@ -135,7 +131,7 @@ function App() {
     return (
       <div className="base-structure">
         <div className='game'>
-            <Board cells={slicedRows}/>
+            <Board cells={testBoardRendering}/>
         </div>
         <div className='chat'>
           <ChatInput sendMessage={sendMessage} />
