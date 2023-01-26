@@ -6,9 +6,9 @@
 !.vscode/extensions.json
 *.code-workspace
 Api/.vs/**
-Api\.vs\dndvtt\v17\.suo
-Api\.vs\dndvtt\*
-Api\.vs\ProjectEvaluation\*
+Api/.vs/dndvtt/v17/.suo
+Api/.vs/dndvtt/*
+Api/.vs/ProjectEvaluation/*
 
 
 ## Ignore Visual Studio temporary files, build results, and
