@@ -9,6 +9,7 @@ Api/.vs/**
 Api/.vs/dndvtt/v17/.suo
 Api/.vs/dndvtt/*
 Api/.vs/ProjectEvaluation/*
+Frontend/client/public/tokens/*
 
 
 ## Ignore Visual Studio temporary files, build results, and
