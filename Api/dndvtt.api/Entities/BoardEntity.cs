@@ -15,6 +15,8 @@ namespace dndvtt.api.Entities
             _selfSheet = selfSheet;
         }
 
+        public BoardEntity() { }
+
         public int Roll(int dice, int dieAmount)
         {
             int result = 0;
