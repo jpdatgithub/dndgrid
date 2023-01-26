@@ -106,7 +106,7 @@ function App() {
     var testBoardRendering = [
         [
             {
-                occupied: true,
+                occupied: 1,
                 tokenPicId: "token_1.png"
             }
         ]
