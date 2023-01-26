@@ -11,6 +11,8 @@ given that i'm on the available add token -> available tokens screen on tools, i
 	have the token added and displayed on the field
 
 ---------------------------------------------------------------------------------------------------
+maybe it's worth to assign "owner" to tokens when they're added, then they'd always know who set them there
+also could be easily changeable. we could use the clients connection id or something, from signalr hubs
 
 as ttm facade contains the hub, method will be invoked there from client with needed info to perform the action, in this case, add a token
 so something like "addtoken(position, tokenId)" on the ttm facade
