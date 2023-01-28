@@ -1,6 +1,7 @@
 ﻿using dndvtt.api.Models.Domain.Interfaces;
 using dndvtt.api.Entities.Properties.Interfaces;
 using dndvtt.api.Entities.Interfaces;
+using dndvtt.api.Models.Domain;
 
 namespace dndvtt.api.Entities
 {
@@ -8,11 +9,13 @@ namespace dndvtt.api.Entities
     {
         private Random _random;
         private ISheet _selfSheet;
-        private List<IAction> _actions;
+        private List<SingleTargetAttack>? _sats;
 
         public BoardEntity(ISheet selfSheet) {
             _random = new Random();
             _selfSheet = selfSheet;
+
+            // load, initially, single target attacks from db
         }
 
         public BoardEntity() { }
