@@ -1,4 +1,5 @@
 ﻿using dndvtt.api.Facades.Interfaces;
+using dndvtt.api.Models.Tools;
 
 namespace dndvtt.api.Facades
 {
@@ -7,6 +8,10 @@ namespace dndvtt.api.Facades
         public ToolsFacade()
         {
 
+        }
+        public ToolsModel Init()
+        {
+            return new ToolsModel();
         }
     }
 }

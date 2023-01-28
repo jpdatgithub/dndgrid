@@ -11,6 +11,7 @@ class Toolbar extends React.Component {
     render() {
         var renderedToolbuttons = this.props.toolbuttons.map((toolbutton, tIndex) => {
             return <li key={"toolbutton"+String(tIndex)}><Toolbutton value={toolbutton}/></li>
+            /*TODO change this toolbuton string above to something unique, maybe an idprop like the tab viewer */
         });
 
         return (

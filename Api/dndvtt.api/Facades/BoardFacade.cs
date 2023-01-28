@@ -23,5 +23,10 @@ namespace dndvtt.api.Facades
             _boardHistory.Add(newState);
             return newState;
         }
+
+        public BoardModel Init()
+        {
+            return new BoardModel(200, 200);
+        }
     }
 }

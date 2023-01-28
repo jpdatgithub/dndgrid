@@ -40,5 +40,10 @@ namespace dndvtt.api.Facades
 
             //gotta send it to clients after
         }
+
+        public async Task Init()
+        {
+
+        }
     }
 }

@@ -123,10 +123,29 @@ function App() {
         }
     ]
 
+    const toolbarTabTitles = [
+        "Character",
+        "Hand",
+        "Game Master"
+    ]
+
     const panelId = "panel";
       
 
-    var testTools = ["attacks", "spells", "skills", "saving throws", "inventory"];
+    var testTools = {
+        toolbuttons: ["attacks", "spells", "skills", "saving throws", "inventory"]
+    }
+    var testTools2 = {
+        toolbuttons: ["Add token", "test"]
+    }
+    var testTools3 = {
+        toolbuttons: ["New map", "new layer", "pull players"]
+    }
+    var toolsContentList = [
+        new Toolbar(testTools),
+        new Toolbar(testTools2),
+        new Toolbar(testTools3)
+    ]
 
     return (
       <div className="base-structure">
@@ -139,10 +158,10 @@ function App() {
           <ChatWindow chat={chat}/>
         </div>
         <div className="panel">
-            <TabViewer contentTabs = {panelTestContent} tvId = {panelId}/>
+            {/*<TabViewer contentTabs = {panelTestContent} tvId = {panelId}/>*/}
         </div>
         <div className="tools">
-          <Toolbar toolbuttons={testTools}/>
+            <TabViewer tabTitles = {toolbarTabTitles} tabContents = {toolsContentList} tvId = "toolstabs"/>
         </div>
       </div>
     );

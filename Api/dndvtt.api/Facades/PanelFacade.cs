@@ -10,7 +10,7 @@ namespace dndvtt.api.Facades
 
         }
 
-        public PanelModel InitPanel()
+        public PanelModel Init()
         {
             return new PanelModel();
         }

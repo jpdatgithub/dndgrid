@@ -42,16 +42,16 @@ class TabViewer extends React.Component {
     }
 
     render() {
-      var tabLinks = this.props.contentTabs.map((content, i) => {
+      var tabLinks = this.props.tabTitles.map((content, i) => {
          return (
-          <button key = {this.props.tvId + "tabLink" + String(i)} className='tab-link' onClick={() => this.openTab(i)}>{content.selectorTitle}</button>
+          <button key = {this.props.tvId + "tabLink" + String(i)} className='tab-link' onClick={() => this.openTab(i)}>{content}</button>
          );
       });
 
-      var renderedContent = this.props.contentTabs.map((content, i) => {
+      var renderedContent = this.props.tabContents.map((content, i) => {
         return (
           <div key = {this.props.tvId + "tabContent" + String(i)} className='tab-content' id={String(i)}>
-            <TabContent content={content.text}/>
+            <TabContent child = { content }/>
           </div>
         );
       });
