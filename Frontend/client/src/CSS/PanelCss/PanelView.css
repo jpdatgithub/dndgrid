@@ -1,0 +1,28 @@
+.panel-view {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem 1rem;
+    padding: 1rem;
+}
+
+.token-view {
+    grid-column: 1;
+    grid-row: 1/3;
+    background-color: #F4DFBA;
+    padding: 0.5rem;
+}
+
+.token-props-view {
+    grid-column: 2;
+    grid-row: 1;
+    background-color: #F4DFBA;
+    padding: 0.5rem;
+}
+
+.token-contitions-view {
+    grid-column: 2;
+    grid-row: 2;
+    background-color: #F4DFBA;
+    padding: 0.5rem;
+}
