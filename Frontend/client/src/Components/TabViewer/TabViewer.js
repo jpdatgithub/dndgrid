@@ -36,22 +36,37 @@ class TabViewer extends React.Component {
           tabLinks[i].className = tabLinks[i].className.replace(" active", "");
         }
     
-        tabContent[selected].style.display = "block";
         tabLinks[selected].className += " active";
+        tabContent[selected].style.display = "block";
       }
     }
 
     render() {
       var tabLinks = this.props.tabTitles.map((content, i) => {
          return (
-          <button key = {this.props.tvId + "tabLink" + String(i)} className='tab-link' onClick={() => this.openTab(i)}>{content}</button>
+          <button 
+          key = {this.props.tvId + "tabLink" + String(i)} 
+          className={"tab-link" + ((i == 0) ? " active" : "")}
+          onClick={() => this.openTab(i)}
+          >
+          
+          {content}
+
+          </button>
          );
       });
 
       var renderedContent = this.props.tabContents.map((content, i) => {
         return (
-          <div key = {this.props.tvId + "tabContent" + String(i)} className='tab-content' id={String(i)}>
+          <div 
+          key = {this.props.tvId + "tabContent" + String(i)} 
+          className='tab-content' 
+          id={String(i)}
+          style = {(i == 0) ? {display: 'block'} : {}}
+          >
+
             <TabContent child = { content }/>
+
           </div>
         );
       });

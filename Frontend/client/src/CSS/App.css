@@ -3,6 +3,8 @@
   display: grid;
   grid-template-columns: 3fr 1fr 1fr;
   grid-template-rows: 4fr 1fr;
+  /* there's something here... even if i change the template rows to like 20 to 1, it doesnt change much. i guess it has something to do with the 
+  image's fixed size on the panels. */
   width: 100vw;
   height: 100vh;
   gap: 1rem;
