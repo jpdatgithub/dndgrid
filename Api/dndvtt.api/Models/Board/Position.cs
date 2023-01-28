@@ -1,4 +1,4 @@
-﻿namespace dndvtt.api.Models
+﻿namespace dndvtt.api.Models.Board
 {
     public class Position
     {

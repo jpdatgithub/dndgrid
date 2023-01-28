@@ -1,4 +1,5 @@
 ﻿using dndvtt.api.Facades.Interfaces;
+using dndvtt.api.Models.Panel;
 
 namespace dndvtt.api.Facades
 {
@@ -7,6 +8,11 @@ namespace dndvtt.api.Facades
         public PanelFacade()
         {
 
+        }
+
+        public PanelModel InitPanel()
+        {
+            return new PanelModel();
         }
     }
 }

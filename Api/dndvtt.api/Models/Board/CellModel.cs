@@ -6,7 +6,8 @@ namespace dndvtt.api.Models.Board
     {
         public IBoardEntity? Occupant { get; set; }
 
-        public CellModel() { 
+        public CellModel()
+        {
             Occupant = null;
         }
     }

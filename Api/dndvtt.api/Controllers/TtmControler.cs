@@ -1,10 +1,10 @@
 using System.Threading.Tasks;
-using dndvtt.api.Models.Chat;
 using dndvtt.api.Hubs;
 using dndvtt.api.Hubs.Clients;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
 using dndvtt.api.Facades.Interfaces;
+using dndvtt.api.Models.Chat;
 
 namespace dndvtt.api.Controllers
 {

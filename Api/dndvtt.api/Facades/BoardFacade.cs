@@ -1,6 +1,5 @@
 ﻿using dndvtt.api.Entities.Interfaces;
 using dndvtt.api.Facades.Interfaces;
-using dndvtt.api.Models;
 using dndvtt.api.Models.Board;
 
 namespace dndvtt.api.Facades

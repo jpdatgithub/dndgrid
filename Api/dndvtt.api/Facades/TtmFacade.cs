@@ -3,11 +3,10 @@ using dndvtt.api.Entities.Interfaces;
 using dndvtt.api.Entities.Properties.Interfaces;
 using dndvtt.api.Hubs;
 using dndvtt.api.Hubs.Clients;
-using dndvtt.api.Models.Chat;
-using dndvtt.api.Models;
-using dndvtt.api.Models.Board;
 using Microsoft.AspNetCore.SignalR;
 using dndvtt.api.Services.Interfaces;
+using dndvtt.api.Models.Board;
+using dndvtt.api.Models.Chat;
 
 namespace dndvtt.api.Facades
 {
