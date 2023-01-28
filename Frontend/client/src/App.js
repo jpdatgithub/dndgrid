@@ -9,6 +9,7 @@ import Board from './Components/Game/Board';
 import Toolbar from './Components/Toolbar/Toolbar';
 
 import TabViewer from './Components/TabViewer/TabViewer';
+import PanelView from './Components/Panel/PanelView';
 
 function App() {
     const [ connection, setConnection ] = useState(null);
@@ -129,9 +130,13 @@ function App() {
         "Game Master"
     ]
 
-    const panelId = "panel";
-      
+    const panelTabTitles = [
+        "Self",
+        "Target"
+    ]
 
+    const panelId = "panel";
+    
     var testTools = {
         toolbuttons: ["attacks", "spells", "skills", "saving throws", "inventory"]
     }
@@ -147,6 +152,34 @@ function App() {
         new Toolbar(testTools3)
     ]
 
+    const tokenPropsTest = [
+        {
+            name: "Health Points",
+            value: 20
+        },
+        {
+            name: "Armor Class",
+            value: 13
+        }
+    ]
+
+    var testPanel1 = {
+        tokenPicId: "token_1.png",
+        tokenProps: tokenPropsTest,
+        pvId: "pv1"
+    }
+
+    var testPanel2 = {
+        tokenPicId: "token_1.png",
+        tokenProps: tokenPropsTest,
+        pvId: "pv2"
+    }
+
+    const multiplePanelsTest = [
+        new PanelView(testPanel1),
+        new PanelView(testPanel2)
+    ]
+
     return (
       <div className="base-structure">
         <div className='game'>
@@ -158,7 +191,7 @@ function App() {
           <ChatWindow chat={chat}/>
         </div>
         <div className="panel">
-            {/*<TabViewer contentTabs = {panelTestContent} tvId = {panelId}/>*/}
+            <TabViewer tabTitles = {panelTabTitles} tabContents = {multiplePanelsTest} tvId = "panelstabs"/>
         </div>
         <div className="tools">
             <TabViewer tabTitles = {toolbarTabTitles} tabContents = {toolsContentList} tvId = "toolstabs"/>
@@ -166,5 +199,10 @@ function App() {
       </div>
     );
 }
+
+/* ESSENTIAL PROPS
+PanelView: tokenProps, tokenPicId, pvId
+
+*/
 
 export default App;

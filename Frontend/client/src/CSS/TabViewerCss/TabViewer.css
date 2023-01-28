@@ -24,7 +24,7 @@
 
 .tab-viewer {
     display: grid;
-    grid-template-rows: 1fr 4fr;
+    grid-auto-rows: 2;
 }
 
 .tab-selector {
