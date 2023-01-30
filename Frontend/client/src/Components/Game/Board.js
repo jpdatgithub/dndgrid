@@ -1,7 +1,7 @@
 import React from 'react';
 import '../../Css/GameCss/Board.css'
 
-import Cell from './Cell.js';
+import Cell from './Cell.tsx';
 
 class Board extends React.Component {
     constructor(props) {

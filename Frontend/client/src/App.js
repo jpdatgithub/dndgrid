@@ -37,7 +37,9 @@ function App() {
                     console.log('Connected!');
 
                     //fetch initial state here?
-
+                    connection.on('Init', InitData => {
+                        
+                    });
     
                     connection.on('ReceiveMessage', message => {
                         const updatedChat = [...latestChat.current];
@@ -196,16 +198,16 @@ function App() {
         <div className='game'>
             <Board cells={testBoardRendering}/>
         </div>
-        <div className='chat'>
-          <ChatInput sendMessage={sendMessage} />
-          <hr />
-          <ChatWindow chat={chat}/>
-        </div>
         <div className="panel">
             <TabViewer tabTitles = {panelTabTitles} tabContents = {multiplePanelsTest} tvId = "panelstabs"/>
         </div>
         <div className="tools">
             <TabViewer tabTitles = {toolbarTabTitles} tabContents = {toolsContentList} tvId = "toolstabs"/>
+        </div>
+        <div className='chat'>
+          <ChatInput sendMessage={sendMessage} />
+          <hr />
+          <ChatWindow chat={chat}/>
         </div>
       </div>
     );

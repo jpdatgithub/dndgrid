@@ -1,8 +1,16 @@
 import React from 'react';
 import '../../Css/GameCss/Cell.css';
 
-class Cell extends React.PureComponent {
-    constructor(props) {
+
+type CellFrontendViewObject = {
+    value: {
+        occupied: boolean,
+        tokenPicId: string
+    }
+}
+
+class Cell extends React.PureComponent<CellFrontendViewObject> {
+    constructor(props: CellFrontendViewObject) {
         super(props);
         
     }
