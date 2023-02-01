@@ -1,9 +1,19 @@
 import React from 'react';
-
 import '../../Css/PanelCss/PanelView.css'
 
-class PanelView extends React.Component {
-    constructor(props) {
+export interface ITokenProp {
+    name: string,
+    value: number
+}
+
+export interface IPanelViewProps {
+    tokenProps: Array<ITokenProp>,
+    tokenPicId: string,
+    pvId: string
+}
+
+class PanelView extends React.PureComponent<IPanelViewProps> {
+    constructor(props: IPanelViewProps) {
         super(props)
     }
 
