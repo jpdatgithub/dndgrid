@@ -1,13 +1,13 @@
 import React from 'react';
 import '../../Css/PanelCss/PanelView.css'
 
-export interface ITokenProp {
+export interface ITokenProps {
     name: string,
     value: number
 }
 
 export interface IPanelViewProps {
-    tokenProps: Array<ITokenProp>,
+    tokenProps: Array<ITokenProps>,
     tokenPicId: string,
     pvId: string
 }

@@ -1,8 +1,12 @@
 import React from 'react';
 import '../../Css/ToolbarCss/Toolbar.css'
 
-class Toolbar extends React.Component {
-    constructor(props) {
+export interface IToolbarProps {
+    toolbuttons: Array<string>
+}
+
+class Toolbar extends React.PureComponent<IToolbarProps> {
+    constructor(props: IToolbarProps) {
         super(props);
     }
 
