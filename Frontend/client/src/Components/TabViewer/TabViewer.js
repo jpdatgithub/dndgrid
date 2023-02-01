@@ -1,8 +1,6 @@
 import React from 'react';
 import '../../Css/TabViewerCss/TabViewer.css'
 
-import TabContent from './TabContent.js'
-
 class TabViewer extends React.Component {
   // requer um array de conteudo chamado contentTabs cujos elementos sejam interpretaveis pelo componente TabContent
 
@@ -65,7 +63,7 @@ class TabViewer extends React.Component {
           style = {(i == 0) ? {display: 'block'} : {}}
           >
 
-            <TabContent child = { content }/>
+            {content.render()}
 
           </div>
         );
