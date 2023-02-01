@@ -1,30 +1,37 @@
 import React from 'react';
 import '../../Css/TabViewerCss/TabViewer.css'
 
-class TabViewer extends React.Component {
-  // requer um array de conteudo chamado contentTabs cujos elementos sejam interpretaveis pelo componente TabContent
+export interface ITabViewerChild {
+  render(): JSX.Element
+}
 
-    constructor(props) {
+export interface ITabViewerProps {
+  tabTitles: Array<string>,
+  tabContents: Array<ITabViewerChild>,
+  tvId: string
+}
+
+export interface ITabViewerState {
+  selectorsDivRef?: any,
+  contentDivRef?: any
+}
+
+class TabViewer extends React.Component<ITabViewerProps, ITabViewerState> {
+    constructor(props: ITabViewerProps) {
         super(props)
 
-        this.selectorsDivRef = null;
-        this.contentDivRef = null;
+        this.state = {
+          selectorsDivRef: React.createRef(),
+          contentDivRef: React.createRef()
+        }
     }
 
-    setSelectorDivRef = element => {
-      this.selectorsDivRef = element;    
-    };
-
-    setContentDivRef = element => {
-      this.contentDivRef = element;    
-    };
-
-    openTab(selected) {
-      if (this.selectorsDivRef && this.contentDivRef) {
+    openTab(selected: number) {
+      if (this.state.selectorsDivRef && this.state.contentDivRef) {
         var i, tabContent, tabLinks;
       
-        tabContent = this.contentDivRef.children;
-        tabLinks = this.selectorsDivRef.children;
+        tabContent = this.state.contentDivRef.current.children;
+        tabLinks = this.state.selectorsDivRef.current.children;
 
         for (i = 0; i < tabContent.length; i++) {
           tabContent[i].style.display = "none";
@@ -71,10 +78,10 @@ class TabViewer extends React.Component {
 
       return (
         <div className='tab-viewer'>
-          <div className='tab-selector' ref = {this.setSelectorDivRef}>
+          <div className='tab-selector' ref = {this.state.selectorsDivRef}>
             {tabLinks}
           </div>
-          <div className='tab-view' ref = {this.setContentDivRef}>
+          <div className='tab-view' ref = {this.state.contentDivRef}>
             {renderedContent}
           </div>
         </div>
