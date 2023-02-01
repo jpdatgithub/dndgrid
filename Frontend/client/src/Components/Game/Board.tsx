@@ -1,10 +1,15 @@
 import React from 'react';
 import '../../Css/GameCss/Board.css'
 
-import Cell from './Cell.tsx';
+import Cell, {ICellProps} from './Cell';
 
-class Board extends React.Component {
-    constructor(props) {
+
+interface IBoardProps {
+    cells: Array<Array<ICellProps>>
+}
+
+class Board extends React.Component<IBoardProps> {
+    constructor(props: IBoardProps) {
         super(props);
     }
 
@@ -12,7 +17,7 @@ class Board extends React.Component {
         var renderedCells = this.props.cells.map((cellRow, rIndex) => {
             return <ul className ='cell-row' key={"row"+String(rIndex)}>{
                 cellRow.map((cell, cIndex) => {
-                    return <li className="cell-square" key={"cell"+String(rIndex*cellRow.length + cIndex)}><Cell value={cell}/></li>;
+                    return <li className="cell-square" key={"cell"+String(rIndex*cellRow.length + cIndex)}><Cell {...cell}/></li>;
                 })
             }</ul>;
         });

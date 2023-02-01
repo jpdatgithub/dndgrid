@@ -1,16 +1,13 @@
 import React from 'react';
 import '../../Css/GameCss/Cell.css';
 
-
-type CellFrontendViewObject = {
-    value: {
-        occupied: boolean,
-        tokenPicId: string
-    }
+export interface ICellProps {
+    occupied: boolean,
+    tokenPicId: string
 }
 
-class Cell extends React.PureComponent<CellFrontendViewObject> {
-    constructor(props: CellFrontendViewObject) {
+class Cell extends React.PureComponent<ICellProps> {
+    constructor(props: ICellProps) {
         super(props);
         
     }
@@ -18,7 +15,7 @@ class Cell extends React.PureComponent<CellFrontendViewObject> {
     render() {
         return (
             <button className='cell' /* onClick={props.onClick}*/ >
-                {this.props.value.occupied ? <img src={process.env.PUBLIC_URL + '/tokens/' + this.props.value.tokenPicId} alt="token" style={{height: "32px", width: "32px"}}/> : <></>}
+                {this.props.occupied ? <img src={process.env.PUBLIC_URL + '/tokens/' + this.props.tokenPicId} alt="token" style={{height: "32px", width: "32px"}}/> : <></>}
             </button>
         );
     }
