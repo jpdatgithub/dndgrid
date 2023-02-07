@@ -4,9 +4,13 @@ import '../../Css/ChatCss/ChatWindow.css';
 
 import Message from './Message';
 
-const ChatWindow = (props) => {
+export interface IChatWindowProps {
+    chat: any
+}
+
+const ChatWindow = (props: IChatWindowProps) => {
     const chat = props.chat
-        .map(m => <Message 
+        .map((m: any) => <Message 
             key={Date.now() * Math.random()}
             user={m.user}
             message={m.message}/>);

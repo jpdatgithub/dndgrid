@@ -2,11 +2,15 @@ import React, { useState } from 'react';
 
 import '../../Css/ChatCss/ChatInput.css';
 
-const ChatInput = (props) => {
+export interface ISendMessage {
+    sendMessage: (user: string, message: string) => Promise<void>
+}
+
+const ChatInput = (props: ISendMessage) => {
     const [user, setUser] = useState('');
     const [message, setMessage] = useState('');
 
-    const onSubmit = (e) => {
+    const onSubmit = (e: any) => {
         e.preventDefault();
 
         const isUserProvided = user && user !== '';
@@ -20,11 +24,11 @@ const ChatInput = (props) => {
         }
     }
 
-    const onUserUpdate = (e) => {
+    const onUserUpdate = (e: any) => {
         setUser(e.target.value);
     }
 
-    const onMessageUpdate = (e) => {
+    const onMessageUpdate = (e: any) => {
         setMessage(e.target.value);
     }
 
