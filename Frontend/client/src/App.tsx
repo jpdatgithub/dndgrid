@@ -1,4 +1,4 @@
-import './App.css';
+import './App.scss';
 
 import React, { useState, useEffect, useRef } from 'react';
 import { HubConnectionBuilder, HubConnection } from '@microsoft/signalr';
@@ -8,8 +8,9 @@ import ChatInput from './Components/ChatInput/ChatInput';
 import { IMessageProps } from './Components/Message/Message'
 import Board from './Components/Board/Board';
 import Toolbar from './Components/Toolbar/Toolbar';
+import Card from './Components/Card/Card';
 
-import TabViewer from './Components/TabViewer/TabViewer';
+import TabViewer from './Components/TabViewer/TabViewer_new2';
 import PanelView from './Components/PanelView/PanelView';
 
 function App() {
@@ -74,6 +75,7 @@ function App() {
         }
     }
 
+    /* BAGUNÇA ABAIXO */
     var testBoardRendering = [
         [
             {
@@ -165,22 +167,37 @@ function App() {
         'sendMessage': sendMessage
     }
 
+    const newITabViewerProp = {
+        tabs: [
+            {
+                title: "Player",
+                children: new Toolbar(testTools),
+            },
+            {
+                title: "Character",
+                children: new Toolbar(testTools2)
+            }
+        ],
+        tvId: "new-tab-viewer-test",
+    }
+
+    /* BAGUNÇA ACIMA */
+
     return (
       <div className="base-structure">
         <div className='game'>
             <Board cells={testBoardRendering}/>
         </div>
-        <div className="panel">
-            <TabViewer tabTitles = {panelTabTitles} tabContents = {multiplePanelsTest} tvId = "panelstabs"/>
-        </div>
-        <div className="tools">
-            <TabViewer tabTitles = {toolbarTabTitles} tabContents = {toolsContentList} tvId = "toolstabs"/>
-        </div>
-        <div className='chat'>
-          <ChatInput {...chatInputProps} />
-          <hr />
-          <ChatWindow chat={chat}/>
-        </div>
+        <Card className="panel bg-color-white-chocolate">
+            
+        </Card>
+        <Card className="tools">
+            <TabViewer {...newITabViewerProp} />
+        </Card>
+        <Card className='chat bg-color-white-chocolate'>
+            <ChatWindow chat={chat}/>
+            <ChatInput {...chatInputProps} />
+        </Card>
       </div>
     );
 }
