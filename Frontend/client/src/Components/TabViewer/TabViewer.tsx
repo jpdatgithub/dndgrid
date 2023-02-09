@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../Css/TabViewerCss/TabViewer.css'
+import './TabViewer.css'
 
 export interface ITabViewerChild {
   render(): JSX.Element

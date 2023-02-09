@@ -1,7 +1,7 @@
 import React from 'react';
-import '../../Css/GameCss/Board.css'
+import './Board.css'
 
-import Cell, {ICellProps} from './Cell';
+import Cell, {ICellProps} from '../Cell/Cell';
 
 
 interface IBoardProps {

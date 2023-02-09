@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../Css/PanelCss/PanelView.css'
+import './PanelView.css'
 
 export interface ITokenProps {
     name: string,

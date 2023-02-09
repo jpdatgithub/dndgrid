@@ -1,8 +1,8 @@
 import React from 'react';
 
-import '../../Css/ChatCss/ChatWindow.css';
+import './ChatWindow.css';
 
-import Message from './Message';
+import Message from '../Message/Message';
 
 export interface IChatWindowProps {
     chat: any

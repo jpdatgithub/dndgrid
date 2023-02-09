@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../Css/GameCss/Cell.css';
+import './Cell.css';
 
 export interface ICellProps {
     occupied: boolean,

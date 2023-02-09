@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import '../../Css/ChatCss/ChatInput.css';
+import './ChatInput.css';
 
 export interface ISendMessage {
     sendMessage: (user: string, message: string) => Promise<void>

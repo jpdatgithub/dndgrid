@@ -1,16 +1,16 @@
-import './Css/App.css';
+import './App.css';
 
 import React, { useState, useEffect, useRef } from 'react';
 import { HubConnectionBuilder, HubConnection } from '@microsoft/signalr';
 
-import ChatWindow from './Components/Chat/ChatWindow';
-import ChatInput from './Components/Chat/ChatInput';
-import { IMessageProps } from './Components/Chat/Message'
-import Board from './Components/Game/Board';
+import ChatWindow from './Components/ChatWindow/ChatWindow';
+import ChatInput from './Components/ChatInput/ChatInput';
+import { IMessageProps } from './Components/Message/Message'
+import Board from './Components/Board/Board';
 import Toolbar from './Components/Toolbar/Toolbar';
 
 import TabViewer from './Components/TabViewer/TabViewer';
-import PanelView from './Components/Panel/PanelView';
+import PanelView from './Components/PanelView/PanelView';
 
 function App() {
     const [ connection, setConnection ] = useState<HubConnection | null>(null);

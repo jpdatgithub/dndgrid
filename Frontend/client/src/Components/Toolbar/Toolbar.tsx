@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../Css/ToolbarCss/Toolbar.css'
+import './Toolbar.css'
 
 export interface IToolbarProps {
     toolbuttons: Array<string>
