@@ -17,9 +17,9 @@ class Toolbar extends React.PureComponent<IToolbarProps> {
         });
 
         return (
-            <ul className='toolbuttonslist'>
+            <div className='toolbuttonslist'>
                 {renderedToolbuttons}
-            </ul>
+            </div>
         );
     }
 }

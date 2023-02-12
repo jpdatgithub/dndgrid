@@ -13,6 +13,77 @@ $nav-tabs-border-color:             $color-chocolate;
 $nav-tabs-link-hover-border-color:  $color-chocolate $color-chocolate $nav-tabs-border-color;
 $nav-tabs-link-active-border-color: $color-chocolate $color-chocolate $nav-tabs-link-active-bg;
 
+.shadowy-top {
+    box-shadow:
+    0 -1px 1px hsl(0deg 0% 0% / 0.075),
+    0 -2px 2px hsl(0deg 0% 0% / 0.075),
+    0 -4px 4px hsl(0deg 0% 0% / 0.075)
+    ;
+}
+
+.shadowy-right {
+    box-shadow:
+    1px 0 1px hsl(0deg 0% 0% / 0.075),
+    2px 0 2px hsl(0deg 0% 0% / 0.075),
+    4px 0 4px hsl(0deg 0% 0% / 0.075)
+    ;
+}
+
+.shadowy-bottom {
+    box-shadow:
+    0 1px 1px hsl(0deg 0% 0% / 0.075),
+    0 2px 2px hsl(0deg 0% 0% / 0.075),
+    0 4px 4px hsl(0deg 0% 0% / 0.075)
+    ;
+}
+
+.shadowy-left {
+    box-shadow:
+    -1px 0 1px hsl(0deg 0% 0% / 0.075),
+    -2px 0 2px hsl(0deg 0% 0% / 0.075),
+    -4px 0 4px hsl(0deg 0% 0% / 0.075)
+    ;
+}
+
+.shadowy-long-top {
+    box-shadow:
+    0 -1px 1px hsl(0deg 0% 0% / 0.075),
+    0 -2px 2px hsl(0deg 0% 0% / 0.075),
+    0 -4px 4px hsl(0deg 0% 0% / 0.075),
+    0 -8px 8px hsl(0deg 0% 0% / 0.075),
+    0 -16px 16px hsl(0deg 0% 0% / 0.075)
+    ;
+}
+
+.shadowy-long-right {
+    box-shadow:
+    1px 0 1px hsl(0deg 0% 0% / 0.075),
+    2px 0 2px hsl(0deg 0% 0% / 0.075),
+    4px 0 4px hsl(0deg 0% 0% / 0.075),
+    8px 0 8px hsl(0deg 0% 0% / 0.075),
+    16px 0 16px hsl(0deg 0% 0% / 0.075)
+    ;
+}
+
+.shadow-long-bottom {
+    box-shadow:
+    0 1px 1px hsl(0deg 0% 0% / 0.075),
+    0 2px 2px hsl(0deg 0% 0% / 0.075),
+    0 4px 4px hsl(0deg 0% 0% / 0.075),
+    0 8px 8px hsl(0deg 0% 0% / 0.075),
+    0 16px 16px hsl(0deg 0% 0% / 0.075)
+    ;
+}
+
+.shadow-long-left {
+    box-shadow:
+    -1px 0 1px hsl(0deg 0% 0% / 0.075),
+    -2px 0 2px hsl(0deg 0% 0% / 0.075),
+    -4px 0 4px hsl(0deg 0% 0% / 0.075),
+    -8px 0 8px hsl(0deg 0% 0% / 0.075),
+    -16px 0 16px hsl(0deg 0% 0% / 0.075)
+    ;
+}
 
 .bg-color-chocolate {
     background-color: $color-chocolate;

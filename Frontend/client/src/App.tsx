@@ -191,9 +191,9 @@ function App() {
         <Card className="panel bg-color-white-chocolate">
             
         </Card>
-        <Card className="tools">
+        <div className="tools">
             <TabViewer {...newITabViewerProp} />
-        </Card>
+        </div>
         <Card className='chat bg-color-white-chocolate'>
             <ChatWindow chat={chat}/>
             <ChatInput {...chatInputProps} />

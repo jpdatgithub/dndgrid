@@ -1,11 +1,30 @@
+@import '../../custom-standards';
+
+.tab-viewer {
+    height: 100%;
+}
+
 .tab-list {
+    flex: 0 1 auto;
     list-style: none;
+    z-index: 999;
 }
 
 .tab-list > li {
     padding: 0 .5rem;
+    background-color: $color-white-chocolate;
+    border-radius: .3rem .3rem 0 0;
+    border-style: solid;
+    border-color: $color-chocolate;
+    border-width: 1px 1px 0 1px;
 }
 
 .pane {
-    height: 200px;
+    flex: 1 1 auto;
+    background-color: $color-white-chocolate;
+    border-radius: 0 .3rem 0 0;
+    border-style: solid;
+    border-color: $color-chocolate;
+    border-width: 1px 1px 0 0;
+    z-index: 0;
 }
