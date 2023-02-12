@@ -13,76 +13,70 @@ $nav-tabs-border-color:             $color-chocolate;
 $nav-tabs-link-hover-border-color:  $color-chocolate $color-chocolate $nav-tabs-border-color;
 $nav-tabs-link-active-border-color: $color-chocolate $color-chocolate $nav-tabs-link-active-bg;
 
-.shadowy-top {
-    box-shadow:
-    0 -1px 1px hsl(0deg 0% 0% / 0.075),
-    0 -2px 2px hsl(0deg 0% 0% / 0.075),
-    0 -4px 4px hsl(0deg 0% 0% / 0.075)
-    ;
+/* SHADOWS SECTION */
+
+$shadow-top-short:
+0 -1px 1px hsl(0deg 0% 0% / 0.075),
+0 -2px 2px hsl(0deg 0% 0% / 0.075),
+0 -4px 4px hsl(0deg 0% 0% / 0.075);
+$shadow-top-long:
+0 -8px 8px hsl(0deg 0% 0% / 0.075),
+0 -16px 16px hsl(0deg 0% 0% / 0.075);
+
+$shadow-bottom-short:
+0 1px 1px hsl(0deg 0% 0% / 0.075),
+0 2px 2px hsl(0deg 0% 0% / 0.075),
+0 4px 4px hsl(0deg 0% 0% / 0.075);
+$shadow-bottom-long:
+0 8px 8px hsl(0deg 0% 0% / 0.075),
+0 16px 16px hsl(0deg 0% 0% / 0.075);
+
+$shadow-left-short:
+-1px 0 1px hsl(0deg 0% 0% / 0.075),
+-2px 0 2px hsl(0deg 0% 0% / 0.075),
+-4px 0 4px hsl(0deg 0% 0% / 0.075);
+$shadow-left-long:
+-8px 0 8px hsl(0deg 0% 0% / 0.075),
+-16px 0 16px hsl(0deg 0% 0% / 0.075);
+
+$shadow-right-short:
+1px 0 1px hsl(0deg 0% 0% / 0.075),
+2px 0 2px hsl(0deg 0% 0% / 0.075),
+4px 0 4px hsl(0deg 0% 0% / 0.075);
+$shadow-right-long:
+8px 0 8px hsl(0deg 0% 0% / 0.075),
+16px 0 16px hsl(0deg 0% 0% / 0.075);
+
+.shadow-top-short {
+    box-shadow: $shadow-top-short;
 }
 
-.shadowy-right {
-    box-shadow:
-    1px 0 1px hsl(0deg 0% 0% / 0.075),
-    2px 0 2px hsl(0deg 0% 0% / 0.075),
-    4px 0 4px hsl(0deg 0% 0% / 0.075)
-    ;
+.shadow-top-long {
+    box-shadow: $shadow-top-short, $shadow-top-long;
 }
 
-.shadowy-bottom {
-    box-shadow:
-    0 1px 1px hsl(0deg 0% 0% / 0.075),
-    0 2px 2px hsl(0deg 0% 0% / 0.075),
-    0 4px 4px hsl(0deg 0% 0% / 0.075)
-    ;
+.shadow-bottom-short {
+    box-shadow: $shadow-bottom-short;
 }
 
-.shadowy-left {
-    box-shadow:
-    -1px 0 1px hsl(0deg 0% 0% / 0.075),
-    -2px 0 2px hsl(0deg 0% 0% / 0.075),
-    -4px 0 4px hsl(0deg 0% 0% / 0.075)
-    ;
+.shadow-bottom-long {
+    box-shadow: $shadow-bottom-short, $shadow-bottom-long;
 }
 
-.shadowy-long-top {
-    box-shadow:
-    0 -1px 1px hsl(0deg 0% 0% / 0.075),
-    0 -2px 2px hsl(0deg 0% 0% / 0.075),
-    0 -4px 4px hsl(0deg 0% 0% / 0.075),
-    0 -8px 8px hsl(0deg 0% 0% / 0.075),
-    0 -16px 16px hsl(0deg 0% 0% / 0.075)
-    ;
+.shadow-right-short {
+    box-shadow: $shadow-right-short;
 }
 
-.shadowy-long-right {
-    box-shadow:
-    1px 0 1px hsl(0deg 0% 0% / 0.075),
-    2px 0 2px hsl(0deg 0% 0% / 0.075),
-    4px 0 4px hsl(0deg 0% 0% / 0.075),
-    8px 0 8px hsl(0deg 0% 0% / 0.075),
-    16px 0 16px hsl(0deg 0% 0% / 0.075)
-    ;
+.shadow-right-long {
+    box-shadow: $shadow-right-short, $shadow-right-long;
 }
 
-.shadow-long-bottom {
-    box-shadow:
-    0 1px 1px hsl(0deg 0% 0% / 0.075),
-    0 2px 2px hsl(0deg 0% 0% / 0.075),
-    0 4px 4px hsl(0deg 0% 0% / 0.075),
-    0 8px 8px hsl(0deg 0% 0% / 0.075),
-    0 16px 16px hsl(0deg 0% 0% / 0.075)
-    ;
+.shadow-left-short {
+    box-shadow: $shadow-left-short;
 }
 
-.shadow-long-left {
-    box-shadow:
-    -1px 0 1px hsl(0deg 0% 0% / 0.075),
-    -2px 0 2px hsl(0deg 0% 0% / 0.075),
-    -4px 0 4px hsl(0deg 0% 0% / 0.075),
-    -8px 0 8px hsl(0deg 0% 0% / 0.075),
-    -16px 0 16px hsl(0deg 0% 0% / 0.075)
-    ;
+.shadow-left-long {
+    box-shadow: $shadow-left-short, $shadow-left-long;
 }
 
 .bg-color-chocolate {

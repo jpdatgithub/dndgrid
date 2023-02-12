@@ -179,6 +179,10 @@ function App() {
             }
         ],
         tvId: "new-tab-viewer-test",
+        shadowTopLong: true,
+        shadowLeftLong: true,
+        shadowBottomShort: true,
+        shadowRightShort: true
     }
 
     /* BAGUNÇA ACIMA */

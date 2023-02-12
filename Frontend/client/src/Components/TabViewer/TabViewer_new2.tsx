@@ -2,6 +2,7 @@ import TabContainer from 'react-bootstrap/esm/TabContainer';
 import TabPane from 'react-bootstrap/esm/TabPane';
 import { PageItem } from 'react-bootstrap';
 import React, { useState } from 'react';
+import classnames from 'classnames';
 
 import './TabViewer_new2.scss';
 
@@ -14,20 +15,63 @@ export interface ITabPaneProps {
 export interface ITabViewerProps {
     tabs: Array<ITabPaneProps>,
     tvId: string,
-    className?: string
+    className?: string,
+    shadowTopShort?: boolean,
+    shadowTopLong?: boolean,
+    shadowBottomShort?: boolean,
+    shadowBottomLong?: boolean,
+    shadowRightShort?: boolean,
+    shadowRightLong?: boolean,
+    shadowLeftShort?: boolean,
+    shadowLeftLong?: boolean
+}
+
+const shadowsDict = {
+  "shadow-top-short": ["0 -1px 1px hsl(0deg 0% 0% / 0.075)","0 -2px 2px hsl(0deg 0% 0% / 0.075)","0 -4px 4px hsl(0deg 0% 0% / 0.075)"],
+  "shadow-top-long":["0 -8px 8px hsl(0deg 0% 0% / 0.075)","0 -16px 16px hsl(0deg 0% 0% / 0.075)"],
+  "shadow-bottom-short":["0 1px 1px hsl(0deg 0% 0% / 0.075)","0 2px 2px hsl(0deg 0% 0% / 0.075)","0 4px 4px hsl(0deg 0% 0% / 0.075)"],
+  "shadow-bottom-long":["0 8px 8px hsl(0deg 0% 0% / 0.075)","0 16px 16px hsl(0deg 0% 0% / 0.075)"],
+  "shadow-left-short":["-1px 0 1px hsl(0deg 0% 0% / 0.075)","-2px 0 2px hsl(0deg 0% 0% / 0.075)","-4px 0 4px hsl(0deg 0% 0% / 0.075)"],
+  "shadow-left-long":["-8px 0 8px hsl(0deg 0% 0% / 0.075)","-16px 0 16px hsl(0deg 0% 0% / 0.075)"],
+  "shadow-right-short":["1px 0 1px hsl(0deg 0% 0% / 0.075)","2px 0 2px hsl(0deg 0% 0% / 0.075)","4px 0 4px hsl(0deg 0% 0% / 0.075)"],
+  "shadow-right-long":["8px 0 8px hsl(0deg 0% 0% / 0.075)","16px 0 16px hsl(0deg 0% 0% / 0.075)"]
 }
 
 function TabViewer(props: ITabViewerProps) {
     const [key, setKey] = useState<string>(props.tvId + "event-key0");
 
+    let paneBoxShadow = new Array<string>;
+      paneBoxShadow = paneBoxShadow.
+      concat(props.shadowBottomShort ? shadowsDict["shadow-bottom-short"] : []).
+      concat(props.shadowBottomLong ? shadowsDict["shadow-bottom-long"] : []).
+      concat(props.shadowTopShort ? shadowsDict["shadow-top-short"] : []).
+      concat(props.shadowTopLong ? shadowsDict["shadow-top-long"] : []).
+      concat(props.shadowRightShort ? shadowsDict["shadow-right-short"] : []).
+      concat(props.shadowRightLong ? shadowsDict["shadow-right-long"] : []).
+      concat(props.shadowLeftShort ? shadowsDict["shadow-left-short"] : []).
+      concat(props.shadowLeftLong ? shadowsDict["shadow-left-long"] : []);
+
     let paginationItems = new Array<any>;
     let tabPanes = props.tabs.map((tab: ITabPaneProps, pIndex) => {
+      let tabLinkBoxShadow = new Array<string>;
+      tabLinkBoxShadow = tabLinkBoxShadow.
+      concat(props.shadowTopShort ? shadowsDict["shadow-top-short"] : []).
+      concat(props.shadowTopLong ? shadowsDict["shadow-top-long"] : []).
+      concat(props.shadowLeftShort && pIndex === 0 ? shadowsDict["shadow-left-short"] : []).
+      concat(props.shadowLeftLong && pIndex === 0 ? shadowsDict["shadow-left-long"] : []).
+      concat(props.shadowRightShort && pIndex === props.tabs.length - 1 ? shadowsDict["shadow-right-short"] : []).
+      concat(props.shadowRightLong && pIndex === props.tabs.length - 1 ? shadowsDict["shadow-right-long"] : []);
+
       paginationItems.push(
         <PageItem 
         key={"tab" + String(pIndex)} 
         onClick={() => setKey(props.tvId + "event-key" + String(pIndex))} 
         active={pIndex === Number(key)}
-        style={{zIndex:(props.tabs.length - pIndex)}}>
+        style={{
+          zIndex:(props.tabs.length - pIndex),
+          boxShadow: tabLinkBoxShadow.join(",")
+        }}
+        >
           {tab.title}
         </PageItem>,
       );
@@ -39,7 +83,7 @@ function TabViewer(props: ITabViewerProps) {
         eventKey={props.tvId + "event-key" + String(pIndex)} 
         unmountOnExit={true} 
         transition={false}
-        className="shadowy-top shadowy-long-top">
+        style={{boxShadow: paneBoxShadow.join(",")}}>
             {tab.children.render()}
         </TabPane>
       );
