@@ -200,7 +200,7 @@ function App() {
         </div>
         <Card className='chat bg-color-white-chocolate'>
             <ChatWindow chat={chat}/>
-            <ChatInput {...chatInputProps} />
+            <ChatInput sendMessage={sendMessage} />
         </Card>
       </div>
     );
