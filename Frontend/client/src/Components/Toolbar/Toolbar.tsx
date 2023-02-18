@@ -1,17 +1,13 @@
 import React from 'react';
 import './Toolbar.css'
 
-export interface IToolbarProps {
-    toolbuttons: Array<string>
-}
-
-class Toolbar extends React.PureComponent<IToolbarProps> {
-    constructor(props: IToolbarProps) {
+class Toolbar extends React.PureComponent<Array<string>> {
+    constructor(props: Array<string>) {
         super(props);
     }
 
     render() {
-        var renderedToolbuttons = this.props.toolbuttons.map((toolbutton, tIndex) => {
+        var renderedToolbuttons = this.props.map((toolbutton, tIndex) => {
             return <li key={"toolbutton"+String(tIndex)}><button>{toolbutton}</button></li>
             /*TODO change this toolbuton string above to something unique, maybe an idprop like the tab viewer */
         });
@@ -25,9 +21,3 @@ class Toolbar extends React.PureComponent<IToolbarProps> {
 }
 
 export default Toolbar;
-
-// div
-//      li
-//      li
-//      li
-// div

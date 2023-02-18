@@ -10,7 +10,7 @@ import Board from './Components/Board/Board';
 import Toolbar from './Components/Toolbar/Toolbar';
 import Card from './Components/Card/Card';
 
-import TabViewer, {ITabViewerProps, TabViewerProps} from './Components/TabViewer/TabViewer_new2';
+import TabViewer, {ITabViewerProps, ITabPaneProps} from './Components/TabViewer/TabViewer_new2';
 import PanelView from './Components/PanelView/PanelView';
 
 function App() {
@@ -39,7 +39,13 @@ function App() {
                     console.log('Connected!');
 
                     connection.on('ReceivePanel', (PanelTVProps: ITabViewerProps) => {
-                        console.log("glugluglu");
+                        console.log(PanelTVProps);
+                        let tabsWithReactObjectChildren = new Array<ITabPaneProps>;
+                        PanelTVProps.tabs.map((tab) => {
+                            tab.children = new Toolbar(tab.children);
+                            tabsWithReactObjectChildren.push(tab);
+                        })
+                        PanelTVProps.tabs = tabsWithReactObjectChildren;
                         let updatedPanel = PanelTVProps;
                         setPanel(updatedPanel);
                     });
@@ -119,11 +125,7 @@ function App() {
     var testTools3 = {
         toolbuttons: ["New map", "new layer", "pull players"]
     }
-    var toolsContentList = [
-        new Toolbar(testTools),
-        new Toolbar(testTools2),
-        new Toolbar(testTools3)
-    ]
+
 
     const tokenPropsTest1 = [
         {
@@ -168,23 +170,7 @@ function App() {
         'sendMessage': sendMessage
     }
 
-    const newITabViewerProp = {
-        tabs: [
-            {
-                title: "Player",
-                children: new Toolbar(testTools),
-            },
-            {
-                title: "Character",
-                children: new Toolbar(testTools2)
-            }
-        ],
-        tvId: "new-tab-viewer-test",
-        shadowTopLong: true,
-        shadowLeftLong: true,
-        shadowBottomShort: true,
-        shadowRightShort: true
-    }
+    
 
     /* BAGUNÇA ACIMA */
 
@@ -197,7 +183,7 @@ function App() {
             
         </Card>
         <div className="tools">
-            <TabViewer {...panel!} />
+            {panel == null ? <></> : <TabViewer {...panel!} />}
         </div>
         <Card className='chat bg-color-white-chocolate'>
             <ChatWindow chat={chat}/>

@@ -3,10 +3,10 @@
     public class NavOptionsModel
     {
         public string title { get; set; }
-        public List<string> options { get; set; }
+        public List<string> children { get; set; }
 
         public NavOptionsModel(List<string> options, string title) { 
-            this.options = options;
+            children = options;
             this.title = title;
         }
     }

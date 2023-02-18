@@ -18,12 +18,12 @@
 
         public bool shadowLeftShort { get; set; }
 
-        public string id { get; set; }
+        public string tvId { get; set; }
 
         public TabViewerModel(List<T> tabs, List<bool> shadows, string id)
         {
             this.tabs = tabs;
-            this.id = id;
+            this.tvId = id;
             shadowTopLong = shadows[0];
             shadowTopShort = shadows[1];
             shadowBottomLong = shadows[2];

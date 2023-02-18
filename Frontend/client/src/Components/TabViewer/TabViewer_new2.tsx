@@ -8,8 +8,7 @@ import './TabViewer_new2.scss';
 
 export interface ITabPaneProps {
     title: string,
-    children: any,
-    className?: string
+    children: any
 }
 
 export interface ITabViewerProps {
