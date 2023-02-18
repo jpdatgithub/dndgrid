@@ -10,14 +10,14 @@ import Board from './Components/Board/Board';
 import Toolbar from './Components/Toolbar/Toolbar';
 import Card from './Components/Card/Card';
 
-import TabViewer from './Components/TabViewer/TabViewer_new2';
+import TabViewer, {ITabViewerProps, TabViewerProps} from './Components/TabViewer/TabViewer_new2';
 import PanelView from './Components/PanelView/PanelView';
 
 function App() {
     const [ connection, setConnection ] = useState<HubConnection | null>(null);
     const [ chat, setChat ] = useState<Array<IMessageProps>>(new Array<IMessageProps>);
     const [ board, setBoard ] = useState([]);
-    const [ panel, setPanel ] = useState([]);
+    const [ panel, setPanel ] = useState<ITabViewerProps>();
     const [ tools, setTools ] = useState([]);
     const latestChat = useRef<Array<IMessageProps>>(new Array<IMessageProps>);
 
@@ -38,9 +38,10 @@ function App() {
                 .then(() => {
                     console.log('Connected!');
 
-                    //fetch initial state here?
-                    connection.on('Init', InitData => {
-                        
+                    connection.on('ReceivePanel', (PanelTVProps: ITabViewerProps) => {
+                        console.log("glugluglu");
+                        let updatedPanel = PanelTVProps;
+                        setPanel(updatedPanel);
                     });
     
                     connection.on('ReceiveMessage', message => {
@@ -196,7 +197,7 @@ function App() {
             
         </Card>
         <div className="tools">
-            <TabViewer {...newITabViewerProp} />
+            <TabViewer {...panel!} />
         </div>
         <Card className='chat bg-color-white-chocolate'>
             <ChatWindow chat={chat}/>

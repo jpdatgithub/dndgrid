@@ -32,6 +32,7 @@ namespace dndvtt.api.Facades
         public async Task SendMessageToAll(ChatMessage message)
         {
             await _ttmHub!.Clients.All.ReceiveMessage(message);
+            
         }
 
         public async Task AddToken(string tokenId, Position position)
@@ -39,11 +40,6 @@ namespace dndvtt.api.Facades
             BoardModel updatedBoard = _boardFacade.AddToken(_dbConnector.LoadToken(tokenId), position);
 
             //gotta send it to clients after
-        }
-
-        public async Task Init()
-        {
-
         }
     }
 }

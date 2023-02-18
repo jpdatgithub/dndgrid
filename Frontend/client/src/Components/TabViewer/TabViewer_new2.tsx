@@ -26,6 +26,33 @@ export interface ITabViewerProps {
     shadowLeftLong?: boolean
 }
 
+export class TabViewerProps implements ITabViewerProps {
+  tabs: Array<ITabPaneProps>;
+  tvId: string;
+  shadowTopShort?: boolean;
+  shadowTopLong?: boolean;
+  shadowBottomShort?: boolean;
+  shadowBottomLong?: boolean;
+  shadowRightShort?: boolean;
+  shadowRightLong?: boolean;
+  shadowLeftShort?: boolean;
+  shadowLeftLong?: boolean;
+
+  constructor(props: ITabViewerProps)
+  {
+    this.tabs = props.tabs;
+    this.tvId = props.tvId;
+    this.shadowTopShort = props.shadowTopShort;
+    this.shadowTopLong = props.shadowTopLong;
+    this.shadowBottomShort = props.shadowBottomShort;
+    this.shadowBottomLong = props.shadowBottomLong;
+    this.shadowRightShort = props.shadowRightShort;
+    this.shadowRightLong = props.shadowRightLong;
+    this.shadowLeftShort = props.shadowLeftShort;
+    this.shadowLeftLong = props.shadowLeftLong;
+  }
+}
+
 const shadowsDict = {
   "shadow-top-short": ["0 -1px 1px hsl(0deg 0% 0% / 0.075)","0 -2px 2px hsl(0deg 0% 0% / 0.075)","0 -4px 4px hsl(0deg 0% 0% / 0.075)"],
   "shadow-top-long":["0 -8px 8px hsl(0deg 0% 0% / 0.075)","0 -16px 16px hsl(0deg 0% 0% / 0.075)"],
@@ -41,6 +68,7 @@ function TabViewer(props: ITabViewerProps) {
     const [key, setKey] = useState<string>(props.tvId + "event-key0");
 
     let paneBoxShadow = new Array<string>;
+    //TODO encapsular isso numa função (toda logica de fazer as sombras)
       paneBoxShadow = paneBoxShadow.
       concat(props.shadowBottomShort ? shadowsDict["shadow-bottom-short"] : []).
       concat(props.shadowBottomLong ? shadowsDict["shadow-bottom-long"] : []).
