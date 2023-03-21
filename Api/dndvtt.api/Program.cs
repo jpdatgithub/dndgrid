@@ -30,7 +30,7 @@ builder.Services.AddScoped<IBoardFacade, BoardFacade>();
 builder.Services.AddScoped<IChatFacade, ChatFacade>();
 builder.Services.AddScoped<IPanelFacade, PanelFacade>();
 builder.Services.AddScoped<IToolsFacade, ToolsFacade>();
-builder.Services.AddSingleton<ITtmFacade, TtmFacade>();
+builder.Services.AddScoped<ITtmFacade, TtmFacade>();
 // SWAGGER
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
