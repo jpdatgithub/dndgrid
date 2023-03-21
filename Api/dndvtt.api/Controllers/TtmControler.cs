@@ -19,11 +19,11 @@ namespace dndvtt.api.Controllers
             _ttmFacade = ttmFacade;
         }
 
-        [HttpGet("init")]
-        public async Task<IActionResult> Init()
+        [HttpGet("init-panel")]
+        public async Task GetInitPanel()
         {
 
-            return Ok();
+
         }
 
         [HttpPost("messages")]
