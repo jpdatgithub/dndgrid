@@ -1,4 +1,4 @@
-﻿using dndvtt.api.Entities.Interfaces;
+﻿using dndvtt.api.Models.Board.Interfaces;
 
 namespace dndvtt.api.Models.Board
 {

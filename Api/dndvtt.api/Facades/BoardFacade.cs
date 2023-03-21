@@ -1,6 +1,6 @@
-﻿using dndvtt.api.Entities.Interfaces;
-using dndvtt.api.Facades.Interfaces;
+﻿using dndvtt.api.Facades.Interfaces;
 using dndvtt.api.Models.Board;
+using dndvtt.api.Models.Board.Interfaces;
 
 namespace dndvtt.api.Facades
 {
@@ -24,9 +24,9 @@ namespace dndvtt.api.Facades
             return newState;
         }
 
-        public BoardModel Init()
+        public BoardModel Refresh()
         {
-            return new BoardModel(200, 200);
+            return _boardHistory.Last();
         }
     }
 }

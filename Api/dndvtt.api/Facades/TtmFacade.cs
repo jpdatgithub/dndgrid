@@ -1,6 +1,4 @@
 ﻿using dndvtt.api.Facades.Interfaces;
-using dndvtt.api.Entities.Interfaces;
-using dndvtt.api.Entities.Properties.Interfaces;
 using dndvtt.api.Hubs;
 using dndvtt.api.Hubs.Clients;
 using Microsoft.AspNetCore.SignalR;
@@ -33,13 +31,6 @@ namespace dndvtt.api.Facades
         {
             await _ttmHub!.Clients.All.ReceiveMessage(message);
             
-        }
-
-        public async Task AddToken(string tokenId, Position position)
-        {
-            BoardModel updatedBoard = _boardFacade.AddToken(_dbConnector.LoadToken(tokenId), position);
-
-            //gotta send it to clients after
         }
     }
 }

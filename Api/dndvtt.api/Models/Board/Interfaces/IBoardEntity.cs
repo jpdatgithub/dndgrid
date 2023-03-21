@@ -1,4 +1,4 @@
-﻿namespace dndvtt.api.Entities.Interfaces
+﻿namespace dndvtt.api.Models.Board.Interfaces
 {
     public interface IBoardEntity
     {
