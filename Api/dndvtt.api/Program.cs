@@ -1,10 +1,10 @@
-using dndvtt.api.Facades;
-using dndvtt.api.Facades.Interfaces;
-using dndvtt.api.Hubs.Clients;
-using dndvtt.api.Hubs;
-using dndvtt.api.Services.Interfaces;
-using dndvtt.api.Services;
-using Microsoft.AspNetCore.SignalR;
+﻿using Microsoft.AspNetCore.SignalR;
+using dndvtt.api.Services.Database.Interfaces;
+using dndvtt.api.Services.Database;
+using dndvtt.api.Services.Facades.Interfaces;
+using dndvtt.api.Services.Facades;
+using dndvtt.api.Services.Hubs.Clients;
+using dndvtt.api.Services.Hubs;
 
 var ClientPermission = "_clientPermission";
 
@@ -26,10 +26,6 @@ builder.Services.AddSignalR();
 builder.Services.AddControllers();
 builder.Services.AddScoped<Hub<ITtmClient>, TtmHub>();
 builder.Services.AddScoped<IDBConnector, LiteDBConnector>();
-builder.Services.AddScoped<IBoardFacade, BoardFacade>();
-builder.Services.AddScoped<IChatFacade, ChatFacade>();
-builder.Services.AddScoped<IPanelFacade, PanelFacade>();
-builder.Services.AddScoped<IToolsFacade, ToolsFacade>();
 builder.Services.AddScoped<ITtmFacade, TtmFacade>();
 // SWAGGER
 builder.Services.AddEndpointsApiExplorer();
