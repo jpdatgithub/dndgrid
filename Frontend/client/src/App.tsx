@@ -18,7 +18,7 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-  const [token, setToken] = useState();
+  const [token, setToken] = useState(String);
 
   if(!token) {
     return <Login setToken={setToken} />

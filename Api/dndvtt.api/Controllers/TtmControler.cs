@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using dndvtt.api.Models.Chat;
+using dndvtt.api.Models;
 using dndvtt.api.Services.Facades.Interfaces;
 
 namespace dndvtt.api.Controllers
@@ -21,6 +22,12 @@ namespace dndvtt.api.Controllers
             // run some logic...
 
             await _ttmFacade.SendMessageToAll(message);
+        }
+
+        [HttpPost("login")]
+        public async Task<IActionResult> Login(CredentialsModel credentials)
+        {
+            return Ok(new { token = "test123" });
         }
     }
 }
