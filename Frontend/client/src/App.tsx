@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Gameroom from './Pages/Gameroom/Gameroom'
 import Login from './Components/Login/Login'
 import {
     createBrowserRouter,
     RouterProvider,
 } from "react-router-dom";
+import useToken from './Utils/useToken';
   
 const router = createBrowserRouter([
     {
@@ -18,7 +19,11 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-  const [token, setToken] = useState(String);
+  /* the line below before was:
+  const [token, setToken] = useState();
+  Gotta learn better how that works later because this is how to use a custom React Hook, which seems to be extremely powerfull tool
+  */
+  const { token, setToken } = useToken();
 
   if(!token) {
     return <Login setToken={setToken} />
