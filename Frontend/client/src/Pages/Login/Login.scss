@@ -1,0 +1,23 @@
+@import "../../custom-standards";
+
+.login-page {
+    height: 100vh;
+
+    .login-card {
+        background-color: $color-white-chocolate;
+        padding: .5rem;
+    
+        .login-form {
+            display: flex;
+            flex-direction: column;
+
+            .submit button {
+                margin-top: .5rem;
+            }
+
+            label {
+                flex-direction: column;
+            }
+        }
+    }
+}

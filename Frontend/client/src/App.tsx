@@ -1,6 +1,6 @@
 import React from 'react';
 import Gameroom from './Pages/Gameroom/Gameroom'
-import Login from './Components/Login/Login'
+import Login from './Pages/Login/Login'
 import {
     createBrowserRouter,
     RouterProvider,
@@ -19,10 +19,6 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-  /* the line below before was:
-  const [token, setToken] = useState();
-  Gotta learn better how that works later because this is how to use a custom React Hook, which seems to be extremely powerfull tool
-  */
   const { token, setToken } = useToken();
 
   if(!token) {

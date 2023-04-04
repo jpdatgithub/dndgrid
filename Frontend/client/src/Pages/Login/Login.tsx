@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Card from '../../Components/Card/Card';
 import './Login.scss';
 
 export interface ICredentials {
@@ -35,24 +36,26 @@ export default function Login(props: ILoginProps) {
   }
 
   return (
-    <div className='login-card'>
-      <div className="login-form">
-        <h1>Please Log In</h1>
-        <form onSubmit={handleSubmit}>
-          <label>
-            <p>Username</p>
-            <input type="text" onChange={e => setUserName(e.target.value)}/>
-          </label>
-          <br />
-          <label>
-            <p>Password</p>
-            <input type="password" onChange={e => setPassword(e.target.value)}/>
-          </label>
-          <div>
-            <button type="submit">Submit</button>
-          </div>
-        </form>
-      </div>
+    <div className='login-page display-flex-centered'>
+      <Card className='login-card'
+      children={
+        <div className="login-form">
+          <h1>Please Log In</h1>
+          <form onSubmit={handleSubmit}>
+            <label className='display-flex-centered'>
+              <span>Username</span>
+              <input type="text" onChange={e => setUserName(e.target.value)}/>
+            </label>
+            <label className='display-flex-centered'>
+              <span>Password</span>
+              <input type="password" onChange={e => setPassword(e.target.value)}/>
+            </label>
+            <div className='display-flex-centered submit'>
+              <button type="submit">Submit</button>
+            </div>
+          </form>
+        </div>
+      }/>
     </div>
   )
 }

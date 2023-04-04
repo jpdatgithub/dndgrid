@@ -95,5 +95,11 @@ $shadow-right-long:
     background-color: $color-raw-cookie;
 }
 
+.display-flex-centered {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 // \/ ULTIMA LINHA \/ - importante pro bootstrap funcionar bem :)
 @import "~bootstrap/scss/bootstrap"
