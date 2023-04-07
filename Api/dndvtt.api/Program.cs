@@ -24,9 +24,9 @@ builder.Services.AddCors(options =>
 
 builder.Services.AddSignalR();
 builder.Services.AddControllers();
-builder.Services.AddScoped<Hub<ITtmClient>, TtmHub>();
+builder.Services.AddScoped<Hub<IGameClient>, GameHub>();
 builder.Services.AddScoped<IDBConnector, LiteDBConnector>();
-builder.Services.AddScoped<ITtmFacade, TtmFacade>();
+builder.Services.AddScoped<IGameFacade, GameFacade>();
 // SWAGGER
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -51,6 +51,6 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-app.MapHub<TtmHub>("/hubs/Ttm");
+app.MapHub<GameHub>("/hubs/Ttm");
 
 app.Run();

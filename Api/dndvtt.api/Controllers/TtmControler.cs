@@ -9,9 +9,9 @@ namespace dndvtt.api.Controllers
     [Route("ttm")]
     public class TtmControler : ControllerBase
     {
-        private ITtmFacade _ttmFacade;
+        private IGameFacade _ttmFacade;
 
-        public TtmControler(ITtmFacade ttmFacade)
+        public TtmControler(IGameFacade ttmFacade)
         {
             _ttmFacade = ttmFacade;
         }

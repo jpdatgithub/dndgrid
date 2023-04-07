@@ -5,9 +5,9 @@ using dndvtt.api.Models.TabViewer;
 
 namespace dndvtt.api.Services.Hubs.Clients
 {
-    public interface ITtmClient
+    public interface IGameClient
     {
         Task ReceiveMessage(ChatMessage message);
-        Task ReceivePanel(TabViewerModel<NavOptionsModel> panel);
+        Task ReceivePanel(TabViewerModel<GameOptionsModel> panel);
     }
 }
