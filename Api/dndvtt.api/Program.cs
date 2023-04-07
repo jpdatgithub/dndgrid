@@ -24,9 +24,10 @@ builder.Services.AddCors(options =>
 
 builder.Services.AddSignalR();
 builder.Services.AddControllers();
+builder.Services.AddScoped<IGameFacade, GameFacade>();
 builder.Services.AddScoped<Hub<IGameClient>, GameHub>();
 builder.Services.AddScoped<IDBConnector, LiteDBConnector>();
-builder.Services.AddScoped<IGameFacade, GameFacade>();
+
 // SWAGGER
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

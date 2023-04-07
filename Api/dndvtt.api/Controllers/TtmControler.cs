@@ -2,6 +2,9 @@ using Microsoft.AspNetCore.Mvc;
 using dndvtt.api.Models.Chat;
 using dndvtt.api.Models;
 using dndvtt.api.Services.Facades.Interfaces;
+using dndvtt.api.Services.Hubs.Clients;
+using dndvtt.api.Services.Hubs;
+using Microsoft.AspNetCore.SignalR;
 
 namespace dndvtt.api.Controllers
 {
@@ -9,11 +12,11 @@ namespace dndvtt.api.Controllers
     [Route("ttm")]
     public class TtmControler : ControllerBase
     {
-        private IGameFacade _ttmFacade;
+        private readonly IHubContext<GameHub, IGameClient>? _ttmHub;
 
-        public TtmControler(IGameFacade ttmFacade)
+        public TtmControler(IHubContext<GameHub, IGameClient> ttmHub)
         {
-            _ttmFacade = ttmFacade;
+            _ttmHub = ttmHub;
         }
 
         [HttpPost("messages")]
@@ -21,8 +24,9 @@ namespace dndvtt.api.Controllers
         {
             // run some logic...
 
-            await _ttmFacade.SendMessageToAll(message);
+            await _ttmHub.SendMessageToAll(message);
         }
+
 
         [HttpPost("login")]
         public async Task<IActionResult> Login(CredentialsModel credentials)

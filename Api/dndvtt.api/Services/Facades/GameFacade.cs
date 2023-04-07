@@ -11,22 +11,19 @@ namespace dndvtt.api.Services.Facades
 {
     public class GameFacade : IGameFacade
     {
-        private readonly IHubContext<GameHub, IGameClient>? _ttmHub;
+        private IGameFacade _ttmFacade;
         private Dictionary<string, List<string>> _options;
 
-        public GameFacade(IHubContext<GameHub, IGameClient> ttmHub)
+        public GameFacade(IGameFacade ttmFacade)
         {
-            _ttmHub = ttmHub;
+            _ttmFacade = ttmFacade;
 
             // initialize options dictionary
             string jsonString = File.ReadAllText("../../Jsons/options.json");
             _options = JsonSerializer.Deserialize<Dictionary<string, List<string>>>(jsonString)!;
         }
 
-        public async Task SendMessageToAll(ChatMessage message)
-        {
-            await _ttmHub!.Clients.All.ReceiveMessage(message);
-        }
+
 
         public GameOptionsModel StartGamePanel()
         {

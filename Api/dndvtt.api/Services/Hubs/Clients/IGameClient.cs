@@ -1,6 +1,6 @@
 using System.Threading.Tasks;
 using dndvtt.api.Models.Chat;
-using dndvtt.api.Models.NavOptions;
+using dndvtt.api.Models.Options;
 using dndvtt.api.Models.TabViewer;
 
 namespace dndvtt.api.Services.Hubs.Clients
