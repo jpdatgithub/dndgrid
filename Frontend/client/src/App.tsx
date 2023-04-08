@@ -9,13 +9,17 @@ import useToken from './Utils/useToken';
   
 const router = createBrowserRouter([
     {
+      path:'/*',
+      element: <div>not found</div>
+    },
+    {
       path: "/",
       element: <div>Hello!</div>,
     },
     {
         path: "/gameroom",
         element: <Gameroom />,
-    },
+    }
 ]);
 
 function App() {
