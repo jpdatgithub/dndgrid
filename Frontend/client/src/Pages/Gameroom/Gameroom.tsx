@@ -15,7 +15,7 @@ import PanelView from '../../Components/PanelView/PanelView';
 
 function Gameroom() {
     const [ connection, setConnection ] = useState<HubConnection | null>(null);
-    const [ chat, setChat ] = useState<Array<IMessageProps>>(new Array<IMessageProps>);
+    const [ chat, setChat ] = useState<Array<IMessageProps>>(new Array<IMessageProps>());
     const [ board, setBoard ] = useState([]);
     const [ panel, setPanel ] = useState<ITabViewerProps>();
     const [ tools, setTools ] = useState([]);

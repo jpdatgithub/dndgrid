@@ -30,6 +30,8 @@ namespace dndvtt.api.Services.Hubs
             List<GameOptionsModel> navOptions = new List<GameOptionsModel>() {new GameOptionsModel(options, "title")};
 
             TabViewerModel<GameOptionsModel> panel = new TabViewerModel<GameOptionsModel>(navOptions, shadows, "mainPanel");
+            
+            Clients.Caller.ReceivePanel(panel);
 
             return base.OnConnectedAsync();
         }
