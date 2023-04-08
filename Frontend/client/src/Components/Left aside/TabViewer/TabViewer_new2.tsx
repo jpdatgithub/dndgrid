@@ -2,7 +2,6 @@ import TabContainer from 'react-bootstrap/esm/TabContainer';
 import TabPane from 'react-bootstrap/esm/TabPane';
 import { PageItem } from 'react-bootstrap';
 import React, { useState } from 'react';
-import classnames from 'classnames';
 
 import './TabViewer_new2.scss';
 

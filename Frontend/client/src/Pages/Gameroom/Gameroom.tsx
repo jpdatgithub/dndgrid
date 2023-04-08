@@ -10,7 +10,7 @@ import Board from '../../Components/Board/Board';
 import Toolbar from '../../Components/Toolbar/Toolbar';
 import Card from '../../Components/Card/Card';
 
-import TabViewer, {ITabViewerProps, ITabPaneProps} from '../../Components/TabViewer/TabViewer_new2';
+import Tabs, {ITabViewerProps, ITabPaneProps} from '../../Components/Tabs/Tabs';
 import PanelView from '../../Components/PanelView/PanelView';
 
 function Gameroom() {
@@ -80,6 +80,10 @@ function Gameroom() {
         catch(e) {
             console.log('Sending message failed.', e);
         }
+    }
+
+    const clearChat = () => {
+        setChat([]);
     }
 
     /* BAGUNÇA ABAIXO */
@@ -183,11 +187,12 @@ function Gameroom() {
             
         </Card>
         <div className="tools">
-            {panel == null ? <></> : <TabViewer {...panel!} />}
+            {panel == null ? <></> : <Tabs {...panel!} />}
         </div>
         <Card className='chat bg-color-white-chocolate'>
             <ChatWindow chat={chat}/>
-            <ChatInput sendMessage={sendMessage} />
+            <ChatInput sendMessage={sendMessage}/>
+            <button onClick={clearChat}>Clear</button>
         </Card>
       </div>
     );

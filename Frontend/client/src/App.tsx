@@ -19,6 +19,10 @@ const router = createBrowserRouter([
     {
         path: "/gameroom",
         element: <Gameroom />,
+    },
+    {
+      path:"/test",
+      element: <></> //<-- set element for test here
     }
 ]);
 

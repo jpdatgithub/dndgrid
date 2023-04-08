@@ -33,8 +33,7 @@ const ChatInput = (props: ISendMessage) => {
     }
 
     return (
-        <form className='chat-input'
-            onSubmit={onSubmit}>
+        <form className='chat-input'>
             <label htmlFor="user">User:</label>
             <br />
             <input 
@@ -52,7 +51,7 @@ const ChatInput = (props: ISendMessage) => {
                 value={message}
                 onChange={onMessageUpdate} />
             <br/><br/>
-            <button>Submit</button>
+            <button onClick={onSubmit}>Submit</button>
         </form>
     )
 };
