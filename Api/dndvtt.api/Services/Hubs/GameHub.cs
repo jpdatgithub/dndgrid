@@ -32,10 +32,5 @@ namespace dndvtt.api.Services.Hubs
 
             return base.OnConnectedAsync();
         }
-
-        public async Task SendMessageToAll(ChatMessage message)
-        {
-            await Clients.All.ReceiveMessage(message);
-        }
     }
 }

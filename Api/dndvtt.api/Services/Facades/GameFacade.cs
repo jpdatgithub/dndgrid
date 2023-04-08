@@ -11,19 +11,14 @@ namespace dndvtt.api.Services.Facades
 {
     public class GameFacade : IGameFacade
     {
-        private IGameFacade _ttmFacade;
         private Dictionary<string, List<string>> _options;
 
-        public GameFacade(IGameFacade ttmFacade)
+        public GameFacade()
         {
-            _ttmFacade = ttmFacade;
-
             // initialize options dictionary
             string jsonString = File.ReadAllText("../../Jsons/options.json");
             _options = JsonSerializer.Deserialize<Dictionary<string, List<string>>>(jsonString)!;
         }
-
-
 
         public GameOptionsModel StartGamePanel()
         {

@@ -9,5 +9,6 @@ namespace dndvtt.api.Services.Hubs.Clients
     {
         Task ReceiveMessage(ChatMessage message);
         Task ReceivePanel(TabViewerModel<GameOptionsModel> panel);
+        public Task SendMessageToAll(ChatMessage message);
     }
 }
