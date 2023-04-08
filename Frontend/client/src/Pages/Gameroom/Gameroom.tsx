@@ -6,7 +6,7 @@ import { HubConnectionBuilder, HubConnection } from '@microsoft/signalr';
 import ChatWindow from '../../Components/ChatWindow/ChatWindow';
 import ChatInput from '../../Components/ChatInput/ChatInput';
 import { IMessageProps } from '../../Components/Message/Message'
-import Board from '../../Components/Board/Board';
+import Board, { IBoardProps } from '../../Components/Board/Board';
 import Toolbar from '../../Components/Toolbar/Toolbar';
 import Card from '../../Components/Card/Card';
 
@@ -16,7 +16,7 @@ import PanelView from '../../Components/PanelView/PanelView';
 function Gameroom() {
     const [ connection, setConnection ] = useState<HubConnection | null>(null);
     const [ chat, setChat ] = useState<Array<IMessageProps>>(new Array<IMessageProps>());
-    const [ board, setBoard ] = useState([]);
+    const [ board, setBoard ] = useState<IBoardProps>({ cells: [] });
     const [ panel, setPanel ] = useState<ITabViewerProps>();
     const [ tools, setTools ] = useState([]);
     const latestChat = useRef<Array<IMessageProps>>(new Array<IMessageProps>);
@@ -48,6 +48,11 @@ function Gameroom() {
                         PanelTVProps.tabs = tabsWithReactObjectChildren;
                         let updatedPanel = PanelTVProps;
                         setPanel(updatedPanel);
+                    });
+
+                    connection.on('ReceiveBoard', (BoardProps: IBoardProps) => {
+                        console.log(BoardProps);
+                        setBoard(BoardProps);
                     });
     
                     connection.on('ReceiveMessage', message => {
@@ -181,7 +186,7 @@ function Gameroom() {
     return (
       <div className="base-structure">
         <div className='game'>
-            <Board cells={testBoardRendering}/>
+            <Board cells={board.cells}/>
         </div>
         <Card className="panel bg-color-white-chocolate">
             

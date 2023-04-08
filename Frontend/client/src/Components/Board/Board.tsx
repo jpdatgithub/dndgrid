@@ -4,7 +4,7 @@ import './Board.css'
 import Cell, {ICellProps} from '../Cell/Cell';
 
 
-interface IBoardProps {
+export interface IBoardProps {
     cells: Array<Array<ICellProps>>
 }
 

@@ -1,14 +1,20 @@
-﻿using dndvtt.api.Models.Board.Interfaces;
-
-namespace dndvtt.api.Models.Board
+﻿namespace dndvtt.api.Models.Board
 {
     public class CellModel
     {
-        public IBoardEntity? Occupant { get; set; }
+        public bool occupied;
+        public string? tokenPicId;
 
-        public CellModel()
-        {
-            Occupant = null;
+        public CellModel(bool occupied, string tokenPicId) 
+        { 
+            this.occupied = occupied;
+            this.tokenPicId = tokenPicId;
+        }
+
+        public CellModel() 
+        { 
+            this.occupied=false;
+            this.tokenPicId=null;
         }
     }
 }

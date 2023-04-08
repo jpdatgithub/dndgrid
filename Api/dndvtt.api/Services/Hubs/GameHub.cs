@@ -22,6 +22,7 @@ namespace dndvtt.api.Services.Hubs
         public override Task OnConnectedAsync()
         {
             Clients.Caller.ReceivePanel(_gameFacade.StartGamePanel());
+            Clients.Caller.ReceiveBoard(_gameFacade.getBoardModel());
 
             return base.OnConnectedAsync();
         }
