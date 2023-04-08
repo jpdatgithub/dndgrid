@@ -1,11 +1,7 @@
-﻿using Microsoft.AspNetCore.SignalR;
-using dndvtt.api.Services.Facades.Interfaces;
-using dndvtt.api.Models.Chat;
-using dndvtt.api.Services.Hubs.Clients;
-using dndvtt.api.Services.Hubs;
+﻿using dndvtt.api.Services.Facades.Interfaces;
+using dndvtt.api.Models.TabViewer;
 using dndvtt.api.Models.Options;
 using System.Text.Json;
-using System;
 
 namespace dndvtt.api.Services.Facades
 {
@@ -16,13 +12,15 @@ namespace dndvtt.api.Services.Facades
         public GameFacade()
         {
             // initialize options dictionary
-            string jsonString = File.ReadAllText("../../Jsons/options.json");
+            string jsonString = File.ReadAllText("../../Api/dndvtt.api/Jsons/options.json");
             _options = JsonSerializer.Deserialize<Dictionary<string, List<string>>>(jsonString)!;
         }
 
-        public GameOptionsModel StartGamePanel()
+        public TabViewerModel<GameOptionsModel> StartGamePanel()
         {
-            return new GameOptionsModel(new List<string>(_options["PlayerHand"]), "Player Hand");
+            var playerOptionsTab = new GameOptionsModel(new List<string>(_options["PlayerHand"]), "Player Hand");
+            var tabListForTabViewer = new List<GameOptionsModel>() { playerOptionsTab };
+            return new TabViewerModel<GameOptionsModel>(tabListForTabViewer, "mainPanel");
         }
     }
 }

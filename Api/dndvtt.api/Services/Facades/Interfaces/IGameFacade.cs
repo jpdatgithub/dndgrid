@@ -1,10 +1,11 @@
 ﻿using dndvtt.api.Models.Chat;
 using dndvtt.api.Models.Options;
+using dndvtt.api.Models.TabViewer;
 
 namespace dndvtt.api.Services.Facades.Interfaces
 {
     public interface IGameFacade
     {
-        public GameOptionsModel StartGamePanel();
+        public TabViewerModel<GameOptionsModel> StartGamePanel();
     }
 }

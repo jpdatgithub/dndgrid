@@ -1,3 +1,4 @@
 {
-  "PlayerHand": ["Characters"]
+  "PlayerHand": ["Characters"],
+  "Characters": ["Virgulino"]
 }
