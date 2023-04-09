@@ -30,7 +30,7 @@ function Gameroom(props: IGameroomProps) {
 
     useEffect(() => {
         const newConnection = new HubConnectionBuilder()
-            .withUrl('http://localhost:5191/hubs/Ttm')
+            .withUrl('http://localhost:5191/hubs/powerfantasy')
             .withAutomaticReconnect()
             .build();
 
@@ -79,7 +79,7 @@ function Gameroom(props: IGameroomProps) {
         };
 
         try {
-            await  fetch('http://localhost:5191/ttm/messages', { 
+            await  fetch('http://localhost:5191/powerfantasy/messages', { 
                 method: 'POST', 
                 body: JSON.stringify(chatMessage),
                 headers: {

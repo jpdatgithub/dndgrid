@@ -12,7 +12,7 @@ using powerfantasy.api.Services.Facades;
 namespace dndvtt.api.Controllers
 {
     [ApiController]
-    [Route("ttm")]
+    [Route("powerfantasy")]
     public class PowerFantasyController : ControllerBase
     {
         private HubFacade _hubFacade;
@@ -31,13 +31,6 @@ namespace dndvtt.api.Controllers
             await _hubFacade.SendMessageToAll(message);
         }
 
-
-        //[HttpPost("login")]
-        //public async Task<IActionResult> Login(CredentialsModel credentials)
-        //{
-        //    return Ok(new { token = "test123" });
-        //}
-
         [HttpPost("login")]
         public ActionResult<string> Login(CredentialsModel credentials)
         {
@@ -54,5 +47,6 @@ namespace dndvtt.api.Controllers
             }
         }
 
+        //time to make the "register" post method call now
     }
 }

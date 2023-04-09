@@ -8,7 +8,7 @@ export interface ICredentials {
 }
 
 async function loginUser(credentials: ICredentials): Promise<Response> {
-  return fetch('http://localhost:5191/ttm/login', {
+  return fetch('http://localhost:5191/powerfantasy/login', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'

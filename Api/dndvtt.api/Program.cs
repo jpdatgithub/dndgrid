@@ -60,6 +60,6 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-app.MapHub<GameHub>("/hubs/Ttm");
+app.MapHub<GameHub>("/hubs/powerfantasy");
 
 app.Run();

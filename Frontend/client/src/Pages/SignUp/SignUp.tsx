@@ -4,7 +4,7 @@ import { ICredentials } from '../Login/Login';
 import './SignUp.scss';
 
 async function registerUser(credentials: ICredentials) {
-  return fetch('http://localhost:5191/ttm/register', {
+  return fetch('http://localhost:5191/powerfantasy/register', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
