@@ -7,7 +7,7 @@ export interface ICredentials {
   password: string
 }
 
-async function loginUser(credentials: ICredentials) {
+async function loginUser(credentials: ICredentials): Promise<Response> {
   return fetch('http://localhost:5191/ttm/login', {
     method: 'POST',
     headers: {
@@ -26,7 +26,7 @@ export interface ILoginProps {
 export default function Login(props: ILoginProps) {
   const [username, setUserName] = useState(String);
   const [password, setPassword] = useState(String);
-  const [error, setError] = useState(false);
+  const [unauth, setUnauth] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -36,10 +36,10 @@ export default function Login(props: ILoginProps) {
       password
     });
 
-    if (token == "")
+    if (token.status == 401)
     {
       props.setToken(null);
-      setError(true);
+      setUnauth(true);
     }
     else
     {
@@ -53,8 +53,7 @@ export default function Login(props: ILoginProps) {
       children={
         <div className="login-form">
           <h1>Please Log In</h1>
-          <span className='display-flex-centered error' hidden={false}>Hmm, couldn't find you. Maybe a typo?</span>
-          <form onSubmit={handleSubmit}>
+          {unauth && <span className='display-flex-centered error'>Hmm, couldn't find you. Maybe a typo?</span>}          <form onSubmit={handleSubmit}>
             <label className='display-flex-centered'>
               <span>Username</span>
               <input type="text" onChange={e => setUserName(e.target.value)}/>

@@ -50,7 +50,7 @@ namespace dndvtt.api.Controllers
             else
             {
                 // Authentication failed
-                return Unauthorized(new { token = "" });
+                return Unauthorized();
             }
         }
 
