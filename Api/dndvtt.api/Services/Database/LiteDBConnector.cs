@@ -1,11 +1,21 @@
-﻿using LiteDB.Engine;
-using LiteDB;
+﻿using LiteDB;
 using dndvtt.api.Services.Database.Interfaces;
+using powerfantasy.api.Models.UserData;
 
 namespace dndvtt.api.Services.Database
 {
-    public class LiteDBConnector : IDBConnector
+    public class LiteDbConnector : ILiteDbConnector
     {
-        public LiteDBConnector() { }
+        private readonly LiteDatabase _database;
+
+        public LiteDbConnector(string connectionString)
+        {
+            _database = new LiteDatabase(connectionString);
+        }
+
+        public LiteDatabase getDatabase()
+        {
+            return _database;
+        }
     }
 }

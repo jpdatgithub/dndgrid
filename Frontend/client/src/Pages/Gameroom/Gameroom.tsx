@@ -13,7 +13,12 @@ import Card from '../../Components/Card/Card';
 import Tabs, {ITabViewerProps, ITabPaneProps} from '../../Components/Tabs/Tabs';
 import PanelView from '../../Components/PanelView/PanelView';
 
-function Gameroom() {
+export interface IGameroomProps
+{
+    username: string
+}
+
+function Gameroom(props: IGameroomProps) {
     const [ connection, setConnection ] = useState<HubConnection | null>(null);
     const [ chat, setChat ] = useState<Array<IMessageProps>>(new Array<IMessageProps>());
     const [ board, setBoard ] = useState<IBoardProps>({ cells: [] });
@@ -186,7 +191,7 @@ function Gameroom() {
     return (
       <div className="base-structure">
         <div className='game'>
-            <Board cells={board.cells}/>
+            <Board {...board}/>
         </div>
         <Card className="panel bg-color-white-chocolate">
             
@@ -196,7 +201,7 @@ function Gameroom() {
         </div>
         <Card className='chat bg-color-white-chocolate'>
             <ChatWindow chat={chat}/>
-            <ChatInput sendMessage={sendMessage}/>
+            <ChatInput sendMessage={sendMessage} username={props.username}/>
             <button onClick={clearChat}>Clear</button>
         </Card>
       </div>

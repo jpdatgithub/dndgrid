@@ -2,12 +2,13 @@ import React, { useState } from 'react';
 
 import './ChatInput.css';
 
-export interface ISendMessage {
-    sendMessage: (user: string, message: string) => Promise<void>
+export interface IChatInputProps {
+    sendMessage: (user: string, message: string) => Promise<void>,
+    username: string
 }
 
-const ChatInput = (props: ISendMessage) => {
-    const [user, setUser] = useState('');
+const ChatInput = (props: IChatInputProps) => {
+    const user = props.username;
     const [message, setMessage] = useState('');
 
     const onSubmit = (e: any) => {
@@ -24,25 +25,13 @@ const ChatInput = (props: ISendMessage) => {
         }
     }
 
-    const onUserUpdate = (e: any) => {
-        setUser(e.target.value);
-    }
-
     const onMessageUpdate = (e: any) => {
         setMessage(e.target.value);
     }
 
     return (
         <form className='chat-input'>
-            <label htmlFor="user">User:</label>
-            <br />
-            <input 
-                id="user" 
-                name="user" 
-                value={user}
-                onChange={onUserUpdate} />
-            <br/>
-            <label htmlFor="message">Message:</label>
+            <h2>{props.username}</h2>
             <br />
             <input 
                 type="text"

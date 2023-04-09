@@ -1,14 +1,10 @@
 import React, { useState } from 'react';
 import Card from '../../Components/Card/Card';
-import './Login.scss';
+import { ICredentials } from '../Login/Login';
+import './SignUp.scss';
 
-export interface ICredentials {
-  username: string,
-  password: string
-}
-
-async function loginUser(credentials: ICredentials) {
-  return fetch('http://localhost:5191/ttm/login', {
+async function registerUser(credentials: ICredentials) {
+  return fetch('http://localhost:5191/ttm/register', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -18,42 +14,29 @@ async function loginUser(credentials: ICredentials) {
     .then(data => data.json())
  }
 
-export interface ILoginProps {
-    setToken: Function
+ export interface ISignUpProps {
     setSigningUp: Function
 }
 
-export default function Login(props: ILoginProps) {
+export default function SignUp(props: ISignUpProps) {
   const [username, setUserName] = useState(String);
   const [password, setPassword] = useState(String);
-  const [error, setError] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    const token = await loginUser({
+    await registerUser({
       username,
       password
     });
-
-    if (token == "")
-    {
-      props.setToken(null);
-      setError(true);
-    }
-    else
-    {
-      props.setToken(token);
-    }
+    props.setSigningUp(false);
   }
 
   return (
-    <div className='login-page display-flex-centered'>
-      <Card className='login-card'
+    <div className='signup-page display-flex-centered'>
+      <Card className='signup-card'
       children={
-        <div className="login-form">
-          <h1>Please Log In</h1>
-          <span className='display-flex-centered error' hidden={!error}>Hmm, couldn't find you. Maybe a typo?</span>
+        <div className="signup-form">
+          <h1>Please Sign Up</h1>
           <form onSubmit={handleSubmit}>
             <label className='display-flex-centered'>
               <span>Username</span>
@@ -67,7 +50,7 @@ export default function Login(props: ILoginProps) {
               <button type="submit">Submit</button>
             </div>
             <div className='display-flex-centered signup'>
-              <span>Not registered yet? <button onClick={() => {props.setSigningUp(true)}}>Sign up!</button></span>
+              <span>Already registered? <button onClick={() => {props.setSigningUp(false)}}>Log in!</button></span>
             </div>
           </form>
         </div>

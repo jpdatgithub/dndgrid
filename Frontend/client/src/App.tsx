@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Gameroom from './Pages/Gameroom/Gameroom'
 import Login from './Pages/Login/Login'
 import {
@@ -6,8 +6,19 @@ import {
     RouterProvider,
 } from "react-router-dom";
 import useToken from './Utils/useToken';
+import SignUp from './Pages/SignUp/SignUp';
   
-const router = createBrowserRouter([
+
+
+function App() {
+  const { token, setToken } = useToken();
+  const [signingUp, setSigningUp] = useState(false);
+
+  if(!token) {
+    return signingUp ? <SignUp setSigningUp={setSigningUp}/> : <Login setSigningUp={setSigningUp} setToken={setToken} />
+  }
+
+  const router = createBrowserRouter([
     {
       path:'/*',
       element: <div>not found</div>
@@ -18,20 +29,13 @@ const router = createBrowserRouter([
     },
     {
         path: "/gameroom",
-        element: <Gameroom />,
+        element: <></>//<Gameroom />, need to fetch the username now 
     },
     {
       path:"/test",
       element: <></> //<-- set element for test here
     }
-]);
-
-function App() {
-  const { token, setToken } = useToken();
-
-  if(!token) {
-    return <Login setToken={setToken} />
-  }
+  ]);
 
   return (
     <RouterProvider router={router} />

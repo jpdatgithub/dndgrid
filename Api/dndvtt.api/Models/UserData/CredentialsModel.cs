@@ -1,4 +1,6 @@
-﻿namespace dndvtt.api.Models
+﻿using LiteDB;
+
+namespace powerfantasy.api.Models.UserData
 {
     public class CredentialsModel
     {

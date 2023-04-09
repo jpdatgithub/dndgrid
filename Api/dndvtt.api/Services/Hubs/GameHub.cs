@@ -11,10 +11,10 @@ namespace dndvtt.api.Services.Hubs
 {
     public class GameHub : Hub<IGameClient>
     {
-        private IDBConnector _dbConnector;
+        private ILiteDbConnector _dbConnector;
         private IGameFacade _gameFacade;
 
-        public GameHub(IDBConnector dBConnector, IGameFacade gameFacade) 
+        public GameHub(ILiteDbConnector dBConnector, IGameFacade gameFacade) 
         {
             _dbConnector = dBConnector;
             _gameFacade = gameFacade;

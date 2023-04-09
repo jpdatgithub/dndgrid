@@ -18,7 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\dndvtt.api\dndvtt.api.csproj" />
+    <ProjectReference Include="..\dndvtt.api\powerfantasy.api.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,19 +1,15 @@
 @import "../../custom-standards";
 
-.login-page {
+.signup-page {
     height: 100vh;
 
-    .login-card {
+    .signup-card {
         background-color: $color-white-chocolate;
         padding: .5rem;
     
-        .login-form {
+        .signup-form {
             display: flex;
             flex-direction: column;
-
-            .error {
-                color: "red";
-            }
 
             .submit button {
                 margin-top: .5rem;

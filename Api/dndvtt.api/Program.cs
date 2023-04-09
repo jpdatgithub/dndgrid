@@ -5,6 +5,7 @@ using dndvtt.api.Services.Facades.Interfaces;
 using dndvtt.api.Services.Facades;
 using dndvtt.api.Services.Hubs.Clients;
 using dndvtt.api.Services.Hubs;
+using powerfantasy.api.Services.Facades;
 
 var ClientPermission = "_clientPermission";
 
@@ -24,7 +25,11 @@ builder.Services.AddCors(options =>
 
 builder.Services.AddSignalR();
 builder.Services.AddControllers();
-builder.Services.AddScoped<IDBConnector, LiteDBConnector>();
+
+var connectionString = "Filename=/database.db;Connection=shared";
+builder.Services.AddScoped<ILiteDbConnector, LiteDbConnector>(_ => new LiteDbConnector(connectionString));
+
+builder.Services.AddScoped<UsersFacade>();
 builder.Services.AddScoped<IGameFacade, GameFacade>();
 builder.Services.AddScoped<Hub<IGameClient>, GameHub>();
 builder.Services.AddScoped<HubFacade>();
