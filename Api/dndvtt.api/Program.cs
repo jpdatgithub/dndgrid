@@ -26,7 +26,9 @@ builder.Services.AddCors(options =>
 builder.Services.AddSignalR();
 builder.Services.AddControllers();
 
-var connectionString = "Filename=/database.db;Connection=shared";
+var dbPath = Path.Combine(Directory.GetCurrentDirectory(), "Data", "database.db");
+var connectionString = $"Filename={dbPath};Connection=shared";
+
 builder.Services.AddScoped<ILiteDbConnector, LiteDbConnector>(_ => new LiteDbConnector(connectionString));
 
 builder.Services.AddScoped<UsersFacade>();

@@ -53,7 +53,7 @@ export default function Login(props: ILoginProps) {
       children={
         <div className="login-form">
           <h1>Please Log In</h1>
-          <span className='display-flex-centered error' hidden={!error}>Hmm, couldn't find you. Maybe a typo?</span>
+          <span className='display-flex-centered error' hidden={false}>Hmm, couldn't find you. Maybe a typo?</span>
           <form onSubmit={handleSubmit}>
             <label className='display-flex-centered'>
               <span>Username</span>
