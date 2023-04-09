@@ -1,5 +1,58 @@
 ﻿namespace dndvtt.api.Models.Domain
 {
+    public enum Sense
+    {
+        Blindsight,
+        Darkvision,
+        Tremorsense,
+        Truesight
+    }
+
+    public enum Condition
+    {
+        Blinded,
+        Charmed,
+        Deafened,
+        Exhaustion,
+        Frightened,
+        Grappled,
+        Incapacitated,
+        Invisible,
+        Paralyzed,
+        Petrified,
+        Poisoned,
+        Prone,
+        Restrained,
+        Stunned,
+        Unconscious
+    }
+    public enum DamageType
+    {
+        Acid,
+        Bludgeoning,
+        Cold,
+        Fire,
+        Force,
+        Lightning,
+        MagicBludgeoning,
+        MagicPiercing,
+        MagicSlashing,
+        Necrotic,
+        Piercing,
+        Poison,
+        Psychic,
+        Radiant,
+        Slashing,
+        Thunder
+    }
+    public enum Movement
+    {
+        FlyHover,
+        Fly,
+        Walk,
+        Swim,
+        Climb
+    }
     public enum Class
     {
         Barbarian,
