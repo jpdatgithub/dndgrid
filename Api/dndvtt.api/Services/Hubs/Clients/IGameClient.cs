@@ -11,6 +11,7 @@ namespace dndvtt.api.Services.Hubs.Clients
         Task ReceiveMessage(ChatMessage message);
         Task ReceivePanel(TabViewerModel<GameOptionsModel> panel);
         Task ReceiveBoard(BoardModel board);
+        Task ReceiveUsername(string username);
         public Task SendMessageToAll(ChatMessage message);
     }
 }

@@ -6,6 +6,8 @@ using dndvtt.api.Services.Facades;
 using dndvtt.api.Services.Hubs.Clients;
 using dndvtt.api.Services.Hubs;
 using powerfantasy.api.Services.Facades;
+using LiteDB;
+using powerfantasy.api.Models.UserData;
 
 var ClientPermission = "_clientPermission";
 
@@ -27,6 +29,12 @@ builder.Services.AddSignalR();
 builder.Services.AddControllers();
 
 var dbPath = Path.Combine(Directory.GetCurrentDirectory(), "Data", "database.db");
+
+if (!File.Exists(dbPath))
+{
+    var db = new LiteDatabase(dbPath);
+}
+
 var connectionString = $"Filename={dbPath};Connection=shared";
 
 builder.Services.AddScoped<ILiteDbConnector, LiteDbConnector>(_ => new LiteDbConnector(connectionString));

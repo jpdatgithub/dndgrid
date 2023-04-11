@@ -1,26 +1,12 @@
 import React, { useState } from 'react';
 import Card from '../../Components/Card/Card';
+import { loginUser } from '../../Utils/Calls';
 import './Login.scss';
-
-export interface ICredentials {
-  username: string,
-  password: string
-}
-
-async function loginUser(credentials: ICredentials): Promise<Response> {
-  return fetch('http://localhost:5191/powerfantasy/login', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(credentials)
-  })
-    .then(data => data.json())
- }
 
 export interface ILoginProps {
     setToken: Function
     setSigningUp: Function
+    setUsername: Function
 }
 
 export default function Login(props: ILoginProps) {
@@ -31,19 +17,21 @@ export default function Login(props: ILoginProps) {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const token = await loginUser({
+    const loginResponse: Response = await loginUser({
       username,
       password
     });
 
-    if (token.status == 401)
+    if (loginResponse.ok)
     {
-      props.setToken(null);
-      setUnauth(true);
+      const token = await loginResponse.json();
+      props.setUsername(username);
+      props.setToken(token);
     }
     else
     {
-      props.setToken(token);
+      props.setToken(null);
+      setUnauth(true);
     }
   }
 
@@ -53,7 +41,8 @@ export default function Login(props: ILoginProps) {
       children={
         <div className="login-form">
           <h1>Please Log In</h1>
-          {unauth && <span className='display-flex-centered error'>Hmm, couldn't find you. Maybe a typo?</span>}          <form onSubmit={handleSubmit}>
+          {unauth && <span className='display-flex-centered error'>Hmm, couldn't find you. Maybe a typo?</span>}          
+          <form onSubmit={handleSubmit}>
             <label className='display-flex-centered'>
               <span>Username</span>
               <input type="text" onChange={e => setUserName(e.target.value)}/>

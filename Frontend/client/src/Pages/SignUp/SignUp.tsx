@@ -1,18 +1,7 @@
 import React, { useState } from 'react';
 import Card from '../../Components/Card/Card';
-import { ICredentials } from '../Login/Login';
+import { registerUser } from '../../Utils/Calls';
 import './SignUp.scss';
-
-async function registerUser(credentials: ICredentials) {
-  return fetch('http://localhost:5191/powerfantasy/register', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(credentials)
-  })
-    .then(data => data.json())
- }
 
  export interface ISignUpProps {
     setSigningUp: Function
@@ -21,14 +10,31 @@ async function registerUser(credentials: ICredentials) {
 export default function SignUp(props: ISignUpProps) {
   const [username, setUserName] = useState(String);
   const [password, setPassword] = useState(String);
+  const [conflict, setConflict] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    await registerUser({
+
+    const register = await registerUser({
       username,
       password
     });
-    props.setSigningUp(false);
+
+    if (register.ok)
+    {
+      props.setSigningUp(false);
+    }
+    else
+    {
+      if (register.status == 409)
+      {
+        setConflict(true);
+      }
+      else
+      {
+        console.log("something else happened");
+      }
+    }
   }
 
   return (
@@ -37,6 +43,7 @@ export default function SignUp(props: ISignUpProps) {
       children={
         <div className="signup-form">
           <h1>Please Sign Up</h1>
+          {conflict && <span className='display-flex-centered error'>This user is already registered!</span>}
           <form onSubmit={handleSubmit}>
             <label className='display-flex-centered'>
               <span>Username</span>

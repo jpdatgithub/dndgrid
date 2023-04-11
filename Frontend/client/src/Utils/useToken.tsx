@@ -1,31 +1,40 @@
 import { useState } from 'react';
 
-export default function useToken() {
-  const getToken = () => {
+interface UserToken {
+  token: string;
+}
+
+interface TokenHook {
+  setToken: (userToken: UserToken | null) => void;
+  token: string | null;
+}
+
+export default function useToken(): TokenHook {
+  const getToken = (): string | null => {
     const tokenString = localStorage.getItem('token');
-    const userToken = JSON.parse(tokenString!);
-    return userToken?.token
+    const userToken = JSON.parse(tokenString || 'null') as UserToken | null;
+    return userToken?.token ?? null;
   };
 
-  const [token, setToken] = useState(getToken());
+  const [token, setToken] = useState<string | null>(getToken());
 
-  const saveToken = (response: Response) => {
-    if (!response) {
-      localStorage.removeItem('token');
-      setToken(null);
+  const saveToken = (userToken: UserToken | null) => {
+    if (userToken != null)
+    {
+      localStorage.setItem('token', JSON.stringify(userToken));
+      setToken(userToken.token);
     }
     else
     {
-      response.json().then((data) => {
-        const token = data.token;
-        localStorage.setItem('token', JSON.stringify(token));
-        setToken(token);
-      });
+      setToken(null);
     }
   };
 
   return {
     setToken: saveToken,
-    token
-  }
+    token,
+  };
 }
+
+
+

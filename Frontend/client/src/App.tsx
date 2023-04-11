@@ -7,16 +7,29 @@ import {
 } from "react-router-dom";
 import useToken from './Utils/useToken';
 import SignUp from './Pages/SignUp/SignUp';
+import { validateToken } from './Utils/Calls';
   
 
 
 function App() {
   const { token, setToken } = useToken();
+  const [ username, setUsername ] = useState(String);
   const [signingUp, setSigningUp] = useState(false);
 
   if(!token) {
-    return signingUp ? <SignUp setSigningUp={setSigningUp}/> : <Login setSigningUp={setSigningUp} setToken={setToken} />
+    return signingUp ? <SignUp setSigningUp={setSigningUp}/> : <Login setSigningUp={setSigningUp} setToken={setToken} setUsername={setUsername}/>
   }
+
+  validateToken({token: token})
+    .then(response => {
+    if (!response.ok)
+    {
+      setToken(null);
+    }
+  }).catch(error => {
+    console.error(error);
+    setToken(null);
+  });
 
   const router = createBrowserRouter([
     {
@@ -25,11 +38,11 @@ function App() {
     },
     {
       path: "/",
-      element: <div>Hello!</div>,
+      element: <div>Hello {username}!</div>,
     },
     {
         path: "/gameroom",
-        element: <></>//<Gameroom />, need to fetch the username now 
+        element: <Gameroom username={username}/>
     },
     {
       path:"/test",

@@ -7,16 +7,16 @@ namespace dndvtt.api.Services.Facades
 {
     public class HubFacade
     {
-        private readonly IHubContext<GameHub, IGameClient>? _ttmHub;
+        private readonly IHubContext<GameHub, IGameClient>? _gameHub;
 
-        public HubFacade(IHubContext<GameHub, IGameClient> ttmHub) 
+        public HubFacade(IHubContext<GameHub, IGameClient> gameHub) 
         {
-            _ttmHub = ttmHub;
+            _gameHub = gameHub;
         }
 
         public Task SendMessageToAll(ChatMessage message)
         {
-            return _ttmHub!.Clients.All.ReceiveMessage(message);
+            return _gameHub!.Clients.All.ReceiveMessage(message);
         }
     }
 }

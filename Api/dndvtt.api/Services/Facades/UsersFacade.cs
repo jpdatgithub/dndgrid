@@ -1,6 +1,7 @@
 ﻿using dndvtt.api.Services.Database.Interfaces;
 using LiteDB;
 using powerfantasy.api.Models.UserData;
+using System.Net;
 
 namespace powerfantasy.api.Services.Facades
 {
@@ -11,6 +12,16 @@ namespace powerfantasy.api.Services.Facades
         public UsersFacade(ILiteDbConnector liteDbConnector)
         {
             _database = liteDbConnector.getDatabase();
+
+            if (!_database.CollectionExists("tokens"))
+            {
+                _database.GetCollection<AccessToken>("tokens").EnsureIndex(t => t.UserId);
+            }
+
+            if (!_database.CollectionExists("users"))
+            {
+                _database.GetCollection<User>("users").EnsureIndex(u => u.credentials.username, true);
+            }
         }
 
         public LiteCollection<AccessToken> Tokens => (LiteCollection<AccessToken>)_database.GetCollection<AccessToken>("tokens");
@@ -19,7 +30,7 @@ namespace powerfantasy.api.Services.Facades
         public string? AuthenticateUser(CredentialsModel credentials)
         {
             var user = Users.FindOne(u => u.credentials.username == credentials.username);
-            
+
             if (user == null)
             {
                 return null;
@@ -27,7 +38,7 @@ namespace powerfantasy.api.Services.Facades
 
             if (user.credentials.password == credentials.password)
             {
-                return AssignToken(user.Id.ToString());
+                return AssignToken(user.Id);
             }
             else
             {
@@ -35,7 +46,7 @@ namespace powerfantasy.api.Services.Facades
             }
         }
 
-        public string AssignToken(string userId)
+        public string AssignToken(Guid userId)
         {
             var token = Tokens.FindOne(t => t.UserId == userId);
 
@@ -54,6 +65,28 @@ namespace powerfantasy.api.Services.Facades
             Tokens.Insert(newToken);
 
             return newToken.Id.ToString();
+        }
+
+        public bool RegisterUser(CredentialsModel credentials)
+        {
+            var user = Users.FindOne(u => u.credentials.username == credentials.username);
+
+            if (user != null)
+            {
+                return false;
+            }
+            else
+            {
+                Users.Insert(new User(credentials));
+                return true;
+            }
+        }
+
+        public bool ValidateToken(string token)
+        {
+            var found = Tokens.FindById(Guid.Parse(token));
+
+            return (found != null);
         }
     }
 }

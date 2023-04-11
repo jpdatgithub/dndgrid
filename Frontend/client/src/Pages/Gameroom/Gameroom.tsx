@@ -24,13 +24,14 @@ function Gameroom(props: IGameroomProps) {
     const [ board, setBoard ] = useState<IBoardProps>({ cells: [] });
     const [ panel, setPanel ] = useState<ITabViewerProps>();
     const [ tools, setTools ] = useState([]);
+    const [ username, setUsername ] = useState(String);
     const latestChat = useRef<Array<IMessageProps>>(new Array<IMessageProps>);
 
     latestChat.current = chat;
 
     useEffect(() => {
         const newConnection = new HubConnectionBuilder()
-            .withUrl('http://localhost:5191/hubs/powerfantasy')
+            .withUrl('http://localhost:5191/hubs/powerfantasy', )
             .withAutomaticReconnect()
             .build();
 

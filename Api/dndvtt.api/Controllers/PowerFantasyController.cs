@@ -8,6 +8,7 @@ using dndvtt.api.Services.Facades;
 using powerfantasy.api.Models.UserData;
 using dndvtt.api.Services.Database;
 using powerfantasy.api.Services.Facades;
+using System.Net;
 
 namespace dndvtt.api.Controllers
 {
@@ -47,6 +48,32 @@ namespace dndvtt.api.Controllers
             }
         }
 
-        //time to make the "register" post method call now
+        [HttpPost("register")]
+        public ActionResult Register(CredentialsModel credentials)
+        {
+            var registered = _usersFacade.RegisterUser(credentials);
+
+            if (registered)
+            {
+                return Ok();
+            }
+            else
+            {
+                return Conflict();
+            }
+        }
+
+        [HttpPost("validatetoken")]
+        public ActionResult<string> ValidateToken(ValidationRequest request)
+        {
+            if (_usersFacade.ValidateToken(request.token))
+            {
+                return Ok();
+            }
+            else
+            {
+                return Unauthorized();
+            }
+        }
     }
 }
