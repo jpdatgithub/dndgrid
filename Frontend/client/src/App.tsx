@@ -13,11 +13,10 @@ import { validateToken } from './Utils/Calls';
 
 function App() {
   const { token, setToken } = useToken();
-  const [ username, setUsername ] = useState(String);
   const [signingUp, setSigningUp] = useState(false);
 
   if(!token) {
-    return signingUp ? <SignUp setSigningUp={setSigningUp}/> : <Login setSigningUp={setSigningUp} setToken={setToken} setUsername={setUsername}/>
+    return signingUp ? <SignUp setSigningUp={setSigningUp}/> : <Login setSigningUp={setSigningUp} setToken={setToken}/>
   }
 
   validateToken({token: token})
@@ -38,11 +37,11 @@ function App() {
     },
     {
       path: "/",
-      element: <div>Hello {username}!</div>,
+      element: <div>Hello!</div>,
     },
     {
         path: "/gameroom",
-        element: <Gameroom username={username}/>
+        element: <Gameroom />
     },
     {
       path:"/test",

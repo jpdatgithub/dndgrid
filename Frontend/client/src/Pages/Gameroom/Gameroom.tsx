@@ -12,13 +12,15 @@ import Card from '../../Components/Card/Card';
 
 import Tabs, {ITabViewerProps, ITabPaneProps} from '../../Components/Tabs/Tabs';
 import PanelView from '../../Components/PanelView/PanelView';
+import useToken from '../../Utils/useToken';
 
 export interface IGameroomProps
 {
-    username: string
+
 }
 
 function Gameroom(props: IGameroomProps) {
+    const { token } = useToken();
     const [ connection, setConnection ] = useState<HubConnection | null>(null);
     const [ chat, setChat ] = useState<Array<IMessageProps>>(new Array<IMessageProps>());
     const [ board, setBoard ] = useState<IBoardProps>({ cells: [] });
@@ -28,6 +30,16 @@ function Gameroom(props: IGameroomProps) {
     const latestChat = useRef<Array<IMessageProps>>(new Array<IMessageProps>);
 
     latestChat.current = chat;
+
+    fetch('http://localhost:5191/powerfantasy/username/'+ token)
+    .then(response => response.json())
+    .then(data => {
+        setUsername(data.username);
+    })
+    .catch(error => {
+        console.error(error);
+        setUsername("error");    
+    });
 
     useEffect(() => {
         const newConnection = new HubConnectionBuilder()
@@ -202,7 +214,7 @@ function Gameroom(props: IGameroomProps) {
         </div>
         <Card className='chat bg-color-white-chocolate'>
             <ChatWindow chat={chat}/>
-            <ChatInput sendMessage={sendMessage} username={props.username}/>
+            <ChatInput sendMessage={sendMessage} username={username}/>
             <button onClick={clearChat}>Clear</button>
         </Card>
       </div>

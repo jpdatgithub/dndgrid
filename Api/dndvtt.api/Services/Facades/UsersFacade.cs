@@ -88,5 +88,24 @@ namespace powerfantasy.api.Services.Facades
 
             return (found != null);
         }
+
+        public string? GetUsernameByToken(string token)
+        {
+            var accessToken = Tokens.FindById(Guid.Parse(token));
+
+            if (accessToken == null)
+            {
+                return null;
+            }
+
+            var user = Users.FindById(accessToken.UserId);
+
+            if (user == null)
+            {
+                return null;
+            }
+
+            return user.credentials.username;
+        }
     }
 }

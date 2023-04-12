@@ -8,7 +8,6 @@ using dndvtt.api.Services.Facades;
 using powerfantasy.api.Models.UserData;
 using dndvtt.api.Services.Database;
 using powerfantasy.api.Services.Facades;
-using System.Net;
 
 namespace dndvtt.api.Controllers
 {
@@ -64,11 +63,26 @@ namespace dndvtt.api.Controllers
         }
 
         [HttpPost("validatetoken")]
-        public ActionResult<string> ValidateToken(ValidationRequest request)
+        public ActionResult ValidateToken(ValidationRequest request)
         {
             if (_usersFacade.ValidateToken(request.token))
             {
                 return Ok();
+            }
+            else
+            {
+                return Unauthorized();
+            }
+        }
+
+        [HttpGet("username/{token}")]
+        public IActionResult GetUsername(string token)
+        {
+            var found = _usersFacade.GetUsernameByToken(token);
+
+            if (found != null)
+            {
+                return Ok(new { username = found });
             }
             else
             {

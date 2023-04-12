@@ -6,7 +6,6 @@ import './Login.scss';
 export interface ILoginProps {
     setToken: Function
     setSigningUp: Function
-    setUsername: Function
 }
 
 export default function Login(props: ILoginProps) {
@@ -25,7 +24,6 @@ export default function Login(props: ILoginProps) {
     if (loginResponse.ok)
     {
       const token = await loginResponse.json();
-      props.setUsername(username);
       props.setToken(token);
     }
     else
