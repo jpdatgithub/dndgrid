@@ -1,5 +1,11 @@
 ﻿namespace dndvtt.api.Models.Domain
 {
+    public enum AttackType
+    {
+        Melee,
+        Ranged
+    }
+
     public enum Sense
     {
         Blindsight,

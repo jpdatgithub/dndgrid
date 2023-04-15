@@ -4,6 +4,9 @@
     {
         private CharacterSheet _sheet;
 
-        public MonsterCharacterModel() { }
+        public MonsterCharacterModel() 
+        {
+
+        }
     }
 }
