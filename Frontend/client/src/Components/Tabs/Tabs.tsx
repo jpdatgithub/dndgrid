@@ -3,6 +3,8 @@ import TabPane from 'react-bootstrap/esm/TabPane';
 import { PageItem } from 'react-bootstrap';
 import React, { useState } from 'react';
 
+import ErrorBoundary from '../../Utils/ErrorBoundary';
+
 import './Tabs.scss';
 
 export interface ITabPaneProps {

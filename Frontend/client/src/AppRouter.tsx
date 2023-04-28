@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import Gameroom from './Pages/Gameroom/Gameroom'
+import Card from './Components/Card/Card';
+import Tabs from './Components/Tabs/Tabs';
 import Login from './Pages/Login/Login'
 import {
     createBrowserRouter,
@@ -8,10 +10,11 @@ import {
 import useToken from './Utils/useToken';
 import SignUp from './Pages/SignUp/SignUp';
 import { validateToken } from './Utils/Calls';
-  
+import './custom-standards.scss'
 
+import ErrorBoundary from './Utils/ErrorBoundary';
 
-function App() {
+function AppRouter() {
   const { token, setToken } = useToken();
   const [signingUp, setSigningUp] = useState(false);
 
@@ -45,7 +48,9 @@ function App() {
     },
     {
       path:"/test",
-      element: <></> //<-- set element for test here
+      element: <div className='testing-div'><Card children={<ErrorBoundary children={<Tabs tvId={"testtabs"} tabs={
+        [{title: "attack", children: <span>hello</span>}]
+      }/>}/>}/></div> //<-- set element for test here
     }
   ]);
 
@@ -54,4 +59,4 @@ function App() {
   );
 }
 
-export default App;
+export default AppRouter;

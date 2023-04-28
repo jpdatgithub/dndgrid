@@ -4,7 +4,7 @@ import React from 'react';
 
 export interface ICardProps {
     className?: string,
-    children: any
+    children?: any
 }
 
 export default function Card(props: ICardProps) {
